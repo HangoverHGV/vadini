@@ -1,0 +1,3 @@
+light gray: #a8a9ad
+dark gray: #494745
+dark blue: #03007f
