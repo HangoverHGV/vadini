@@ -5,6 +5,8 @@
   "hero.subtitle": "Soluții de sudură pentru echipamente industriale, fabricație personalizată și construcții din oțel de mare tonaj",
   "nav.services": "Servicii",
   "nav.contact": "Contact",
+  "capabilities.title1": "Servicii",
+  "capabilities.title2": "de Bază",
   "capabilities.demolition.title": "Containere de demolare",
   "capabilities.demolition.description": "Proiectate pentru durabilitate extremă, containerele noastre heavy-duty sunt construite pentru a rezista cerințelor riguroase ale proiectelor de demolare și management al deșeurilor industriale.",
   "capabilities.trailers.title": "Remorci personalizate",
@@ -12,5 +14,14 @@
   "capabilities.hoists.title": "Palanuri & Suporți industriali",
   "capabilities.hoists.description": "Echipamente de ridicare și structuri de sprijin fiabile și certificate pentru șantiere de construcții și industriale, asigurând siguranță și eficiență.",
   "capabilities.repair.title": "Reparații excavatoare",
-  "capabilities.repair.description": "Servicii complete de reparații și recondiționare pentru utilaje grele, minimizând timpul de inactivitate și restabilind echipamentele la performanța operațională maximă."
+  "capabilities.repair.description": "Servicii complete de reparații și recondiționare pentru utilaje grele, minimizând timpul de inactivitate și restabilind echipamentele la performanța operațională maximă.",
+  "footer.contactUs": "Contactați-ne",
+  "footer.getInTouch": "Luați legătura cu noi pentru întrebări sau suport.",
+  "footer.quickLinks": "Link-uri rapide",
+  "footer.reachOut": "Contact",
+  "footer.emailUs": "Trimiteți-ne un email",
+  "footer.whatsappUs": "Contactați-ne pe WhatsApp",
+  "footer.companyName": "Sudura si montaj",
+  "footer.allRightsReserved": "Toate drepturile rezervate.",
+  "footer.callUs": "Sunați-ne"
 }

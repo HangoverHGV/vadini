@@ -9,7 +9,7 @@ export default function CapabilitiesSection() {
 
     const intl = useIntl();
     const [activeCapability, setActiveCapability] = useState(capabilities[0]);
-    const [imageSrc, setImageSrc] = useState('');
+    const [imageSrc, setImageSrc] = useState(null);
 
     useEffect(() => {
         let isMounted = true;
@@ -45,9 +45,9 @@ export default function CapabilitiesSection() {
         {/* Right Side: Text and List */}
         <div className="text-column">
           <h2 className="section-title">
-            Core
+            {intl.formatMessage({ id: "capabilities.title1" })}
             <br />
-            Capabilities
+            {intl.formatMessage({ id: "capabilities.title2" })}
           </h2>
 
           <div className="capabilities-list">

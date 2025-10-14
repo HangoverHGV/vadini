@@ -33,14 +33,27 @@
   margin: 0 0 20px 0;
   text-transform: uppercase;
   /* Create the subtle highlight border box effect */
-  border-left: 5px solid var(--primary-color);
   padding-left: 20px;
 }
 
 /* Remove the border from the first line for the "floating" effect */
 .main-title .title-highlight {
   position: relative;
-  /* This part is optional, depending on how exactly you want the border to look */
+  display: inline-block; /* Essential for containing the absolute pseudo-element */
+    /* Remove the default border-left styling from the previous example if it was here */
+    padding-left: 0;
+}
+
+.main-title .title-highlight::before {
+  content: '';
+  position: absolute;
+  /* Replicates the top-left corner bracket effect */
+  top: -16px; /* Equivalent to -top-4 */
+  left: -16px; /* Equivalent to -left-4 */
+  width: 32px; /* Equivalent to w-8 */
+  height: 32px; /* Equivalent to h-8 */
+  border-top: 4px solid var(--primary-color); /* Horizontal line, h-1 equivalent */
+  border-left: 4px solid var(--primary-color); /* Vertical line, w-1 equivalent */
 }
 
 .subtitle {

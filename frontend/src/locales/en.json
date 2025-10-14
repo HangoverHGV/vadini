@@ -5,6 +5,8 @@
   "hero.subtitle": "Expert welding solutions for industrial equipment, custom fabrication, and heavy-duty steel construction.",
   "nav.services": "Services",
   "nav.contact": "Contact",
+  "capabilities.title1": "Core",
+  "capabilities.title2": "Capabilities",
   "capabilities.demolition.title": "Demolition Containers",
   "capabilities.demolition.description": "Engineered for extreme durability, our heavy-duty containers are built to withstand the rigorous demands of demolition and industrial waste management projects.",
   "capabilities.trailers.title": "Custom Trailers",
@@ -12,5 +14,14 @@
   "capabilities.hoists.title": "Hoists & Trestles",
   "capabilities.hoists.description": "Reliable and certified lifting equipment and support structures for construction and industrial sites, ensuring safety and efficiency.",
   "capabilities.repair.title": "Excavator Repair",
-  "capabilities.repair.description": "Comprehensive repair and refurbishment services for heavy machinery, minimizing downtime and restoring equipment to peak operational performance."
+  "capabilities.repair.description": "Comprehensive repair and refurbishment services for heavy machinery, minimizing downtime and restoring equipment to peak operational performance.",
+  "footer.contactUs": "Contact Us",
+  "footer.getInTouch": "Get in touch with us for inquiries or support.",
+  "footer.quickLinks": "Quick Links",
+  "footer.reachOut": "Reach Out",
+  "footer.emailUs": "Email Us",
+  "footer.whatsappUs": "WhatsApp Us",
+  "footer.companyName": "Sudura si montaj",
+  "footer.allRightsReserved": "All rights reserved.",
+  "footer.callUs": "Call Us"
 }
