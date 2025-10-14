@@ -22,6 +22,19 @@
     padding: 0 15px; /* Adds internal padding to prevent content from touching the edges */
 }
 
+.container-black{
+  background-color: black;
+  color: white;
+  margin-top: 5px;
+  border-radius: 10px;
+}
+
+.container-white{
+  background-color: white;
+  color: black;
+  margin-top: 5px;
+  border-radius: 10px;
+}
 
 
 

@@ -4,5 +4,13 @@
   "hero.steel_craft": "Steel craft",
   "hero.subtitle": "Expert welding solutions for industrial equipment, custom fabrication, and heavy-duty steel construction.",
   "nav.services": "Services",
-  "nav.contact": "Contact"
+  "nav.contact": "Contact",
+  "capabilities.demolition.title": "Demolition Containers",
+  "capabilities.demolition.description": "Engineered for extreme durability, our heavy-duty containers are built to withstand the rigorous demands of demolition and industrial waste management projects.",
+  "capabilities.trailers.title": "Custom Trailers",
+  "capabilities.trailers.description": "Bespoke transport solutions designed and fabricated to your exact specifications, handling unique cargo and weight requirements with ease.",
+  "capabilities.hoists.title": "Hoists & Trestles",
+  "capabilities.hoists.description": "Reliable and certified lifting equipment and support structures for construction and industrial sites, ensuring safety and efficiency.",
+  "capabilities.repair.title": "Excavator Repair",
+  "capabilities.repair.description": "Comprehensive repair and refurbishment services for heavy machinery, minimizing downtime and restoring equipment to peak operational performance."
 }
