@@ -1,43 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import "../assets/css/CapabilitiesSection.css"
+import capabilitiesData from '../data/capabilities.json';
 
-import containerImage from '../assets/images/container.png';
-import trailerImage from '../assets/images/trailer.png';
-import hoistImage from '../assets/images/hoist.png';
-import repairImage from '../assets/images/repair.png';
-
-const capabilities = [
-  {
-    id: 1,
-    titleId: 'capabilities.demolition.title',
-    descriptionId: 'capabilities.demolition.description',
-    imgSrc: containerImage
-  },
-  {
-    id: 2,
-    titleId: 'capabilities.trailers.title',
-    descriptionId: 'capabilities.trailers.description',
-    imgSrc: trailerImage
-  },
-  {
-    id: 3,
-    titleId: 'capabilities.hoists.title',
-    descriptionId: 'capabilities.hoists.description',
-    imgSrc: hoistImage
-  },
-  {
-    id: 4,
-    titleId: 'capabilities.repair.title',
-    descriptionId: 'capabilities.repair.description',
-    imgSrc: repairImage
-  },
-];
+const capabilities = capabilitiesData;
 
 export default function CapabilitiesSection() {
 
     const intl = useIntl();
     const [activeCapability, setActiveCapability] = useState(capabilities[0]);
+    const [imageSrc, setImageSrc] = useState('');
+
+    useEffect(() => {
+        let isMounted = true;
+        const loadImage = async () => {
+            // Dynamically import the image based on the active capability's imageKey
+            const imageModule = await import(`../assets/images/${activeCapability.imageKey}.png`);
+            if (isMounted) {
+                setImageSrc(imageModule.default);
+            }
+        };
+
+        loadImage();
+        return () => { isMounted = false; };
+    }, [activeCapability]);
 
   const handleCapabilityClick = (capability) => {
     setActiveCapability(capability);
@@ -50,7 +36,7 @@ export default function CapabilitiesSection() {
         {/* Left Side: Image */}
         <div className="image-column">
           <img
-            src={activeCapability.imgSrc}
+            src={imageSrc}
             alt={intl.formatMessage({ id: activeCapability.titleId })}
             className="capability-image"
           />

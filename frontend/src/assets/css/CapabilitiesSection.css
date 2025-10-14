@@ -19,7 +19,6 @@
 .image-column {
   overflow: hidden;
   /* The black and white filter is applied to match the image in the prompt */
-  filter: grayscale(100%); 
 }
 
 .capability-image {
