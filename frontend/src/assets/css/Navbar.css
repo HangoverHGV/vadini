@@ -67,6 +67,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-left: auto; /* Pushes this section to the right */
 }
 
 .nav-button {
@@ -191,6 +192,7 @@
 .language-dropdown {
     position: relative;
     display: inline-block;
+    margin-left: 1rem;
 }
 
 .language-button {
@@ -244,6 +246,10 @@
 @media (max-width: 820px) {
     .nav-links {
         display: none; /* Hide desktop links */
+    }
+
+    .navbar-right-section {
+        margin-left: auto; /* Ensure it stays on the right */
     }
 
     .hamburger-menu {

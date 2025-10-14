@@ -125,6 +125,7 @@
   .media-background {
     /* Hide the image background or make it smaller on mobile if needed */
     display: none; 
+    /* display: none; */
   }
   
   .hero-section {
@@ -132,6 +133,6 @@
   }
 
   .main-title {
-    font-size: 3.5rem; /* Adjust title size for mobile */
+    font-size: 3rem; /* Adjust title size for mobile */
   }
 }

@@ -19,11 +19,18 @@
 .image-column {
   overflow: hidden;
   /* The black and white filter is applied to match the image in the prompt */
+  overflow: hidden; /* Clips the image if it's larger than the container */
+  max-height: 500px; /* Set a maximum height for the image container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .capability-image {
   width: 100%;
   height: auto;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the container without distortion */
   display: block;
 }
 
@@ -61,9 +68,8 @@
   font-size: 0.8rem;
   font-weight: 500;
   color: #999999;
-  margin-right: 15px;
   position: absolute;
-  left: -25px; /* Position the number outside the main text area */
+  left: -20px; /* Bring the number a bit closer */
   top: 18px;
 }
 
@@ -71,7 +77,7 @@
   font-size: 1.1rem;
   font-weight: 600;
   color: #000000;
-  margin-left: 20px; /* Space for the vertical line */
+  margin-left: 10px; /* Reduce space for the vertical line */
 }
 
 /* --- Active Item Styling --- */
@@ -118,7 +124,13 @@
 
   .image-column {
     order: 1; /* Keep the image at the top */
+    max-width: 500px; /* Constrain image width on mobile */
+    margin: 0 auto; /* Center the image container */
   }
+  .capability-image {
+  width: 80%;
+  height: auto;
+}
 
   .text-column {
     order: 2;

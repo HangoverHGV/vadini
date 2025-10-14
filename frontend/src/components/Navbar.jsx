@@ -8,6 +8,7 @@ import RomanianFlag from '../assets/images/flags/RomanianFlag';
 function Navabar({ switchLocale, locale }) {
     const intl = useIntl();
     const [isDropdownOpen, setDropdownOpen] = useState(false);
+    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
     const dropdownRef = useRef(null);
 
     // Close dropdown when clicking outside
@@ -34,7 +35,7 @@ function Navabar({ switchLocale, locale }) {
         const renderNavLinks = () => (
         navLinks.map(link => (
             <li key={link.to}>
-                <NavLink to={link.to}>
+                <NavLink to={link.to} onClick={() => setMobileMenuOpen(false)}>
                     {intl.formatMessage({ id: link.id })}
                 </NavLink>
             </li>
@@ -53,6 +54,13 @@ function Navabar({ switchLocale, locale }) {
             <ul className="nav-links">
                 {renderNavLinks()}
             </ul>
+            <div className="navbar-right-section">
+                <button className={`hamburger-menu ${isMobileMenuOpen ? 'open' : ''}`} onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
+                    <div className="bar1"></div>
+                    <div className="bar2"></div>
+                    <div className="bar3"></div>
+                </button>
+
                     <div className="language-dropdown" ref={dropdownRef}>
                         <button className="language-button" onClick={() => setDropdownOpen(!isDropdownOpen)}>
                             {languageConfig[locale].flag}
@@ -70,6 +78,14 @@ function Navabar({ switchLocale, locale }) {
                             </div>
                         )}
                     </div>
+            </div>
+            {isMobileMenuOpen && (
+                <div className="mobile-nav-overlay">
+                    <ul className="mobile-nav-links">
+                        {renderNavLinks()}
+                    </ul>
+                </div>
+            )}
             </nav>
         </div>
         </>
