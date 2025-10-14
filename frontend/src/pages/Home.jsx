@@ -1,13 +1,16 @@
 
-
 import { useIntl } from 'react-intl';
+import HeroSection from '../components/HeroSection';
 
 export default function Home(){
     const intl = useIntl();
 
     return <>
-    <div className='container'>
-        <h1>{intl.formatMessage({ id: 'home.title' })}</h1>
-    </div>
+        <div style={{backgroundColor: 'black'}}>
+            <div className='container'>
+
+                <HeroSection/>
+            </div>
+        </div>
     </>
 }

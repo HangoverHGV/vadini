@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 
 import enMessages from './locales/en.json';
@@ -10,11 +10,16 @@ import Home from './pages/Home'
 
 function App() {
 
-  const [locale, setLocale] = useState('en'); // Default locale
+  const [locale, setLocale] = useState(localStorage.getItem('language') || 'en');
   const messages = {
     'en': enMessages,
     'ro': roMessages,
   };
+
+  // Save locale to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('language', locale);
+  }, [locale]);
 
   const switchLocale = (newLocale) => {
     setLocale(newLocale);
@@ -25,7 +30,7 @@ function App() {
       <BrowserRouter>
         <IntlProvider locale={locale} messages={messages[locale]}>
           <Routes >
-            <Route element={<Layout switchLocale={switchLocale} />}>
+            <Route element={<Layout switchLocale={switchLocale} locale={locale} />}>
               <Route path='/' element={<Home />} />
             </Route>
           </Routes>
