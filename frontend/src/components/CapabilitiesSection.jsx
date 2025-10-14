@@ -2,32 +2,35 @@ import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
 import "../assets/css/CapabilitiesSection.css"
 
-
+import containerImage from '../assets/images/container.png';
+import trailerImage from '../assets/images/trailer.png';
+import hoistImage from '../assets/images/hoist.png';
+import repairImage from '../assets/images/repair.png';
 
 const capabilities = [
   {
     id: 1,
     titleId: 'capabilities.demolition.title',
     descriptionId: 'capabilities.demolition.description',
-    imgSrc: '../assets/images/container.png'
+    imgSrc: containerImage
   },
   {
     id: 2,
     titleId: 'capabilities.trailers.title',
     descriptionId: 'capabilities.trailers.description',
-    imgSrc: '../assets/images/trailer.png'
+    imgSrc: trailerImage
   },
   {
     id: 3,
     titleId: 'capabilities.hoists.title',
     descriptionId: 'capabilities.hoists.description',
-    imgSrc: '../assets/images/hoist.png'
+    imgSrc: hoistImage
   },
   {
     id: 4,
     titleId: 'capabilities.repair.title',
     descriptionId: 'capabilities.repair.description',
-    imgSrc: '../assets/images/repair.png'
+    imgSrc: repairImage
   },
 ];
 
@@ -47,8 +50,8 @@ export default function CapabilitiesSection() {
         {/* Left Side: Image */}
         <div className="image-column">
           <img
-            src="path/to/your/container-image.jpg" // Replace with the path to your image
-            alt="Large industrial container on a construction site"
+            src={activeCapability.imgSrc}
+            alt={intl.formatMessage({ id: activeCapability.titleId })}
             className="capability-image"
           />
         </div>
