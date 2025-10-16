@@ -1,7 +1,7 @@
 .product-description-container {
     padding: 60px 20px;
-    background-color: #222; /* Matching the container-black idea */
-    color: #f0f0f0;
+    background-color: white;
+    color: black;
     text-align: left;
     max-width: 800px;
     margin: 40px auto;

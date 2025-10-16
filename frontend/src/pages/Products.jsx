@@ -7,14 +7,18 @@ export default function Products() {
     const containerDescription = intl.formatMessage({ id: 'products.container.description' });
     const containerTitle = intl.formatMessage({ id: 'products.container.title' });
 
-    return (
-        <div className="container">
-        <div className="container-white">
-            <ProductsCarousel title={containerTitle} imageFolder="container" />
+    return <>
+
+        <div className="container-black">
+            <div className="container">
+                <ProductsCarousel title={containerTitle} imageFolder="container" />
+            </div>
         </div>
-        <div className='container-black'>
+        <div className='container-white'>
+            <div className='container'>
             <ProductDescription description={containerDescription} />
+
+            </div>
         </div>
-        </div>
-    );
+    </>;
 }

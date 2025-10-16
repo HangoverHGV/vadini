@@ -1,6 +1,6 @@
 .journey-carousel-section {
     padding: 60px 20px;
-    background-color: #f9f9f9;
+    background-color: #222; /* Dark background */
     text-align: center;
 }
 
@@ -8,7 +8,7 @@
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 40px;
-    color: var(--primary-text-color);
+    color: #fff; /* White title for dark background */
 }
 
 .journey-slide {
@@ -17,7 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f0f0f0; /* A light background for letterboxing */
+    background-color: #000; /* Black background for letterboxing */
     color: white;
 }
 
