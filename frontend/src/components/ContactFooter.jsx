@@ -29,20 +29,32 @@ export default function ContactFooter() {
                     <h4>{intl.formatMessage({ id: 'footer.reachOut' })}</h4>
                     <div className="social-links">
                         <a href={`mailto:${emailAddress}`} className="contact-link">
-                            {Envelope}
-                            {intl.formatMessage({ id: 'footer.emailUs' })}: <br/>{emailAddress}
+                            {Envelope} 
+                            <div>
+                                {intl.formatMessage({ id: 'footer.emailUs' })}:
+                                <p>{emailAddress}</p>
+                            </div>
                         </a>
                         <a href={`https://wa.me/${phoneNumber}`} target="_blank" rel="noopener noreferrer" className="contact-link">
-                            {WhatsApp}
-                            {intl.formatMessage({ id: 'footer.whatsappUs' })}: <br/>{phoneNumber}
+                            {WhatsApp} 
+                            <div>
+                                {intl.formatMessage({ id: 'footer.whatsappUs' })}:
+                                <p>{phoneNumber}</p>
+                            </div>
                         </a>
                         <a href={`tel:${phoneNumber}`} className="contact-link">
-                            {Phone}
-                            {intl.formatMessage({ id: 'footer.callUs' })}: <br/>{phoneNumber}
+                            {Phone} 
+                            <div>
+                                {intl.formatMessage({ id: 'footer.callUs' })}:
+                                <p>{phoneNumber}</p>
+                            </div>
                         </a>
                         <a href='https://maps.app.goo.gl/Cg9rA1FfZGkf4XSK7' className='contact-link'>
-                            {Location}
-                            {intl.formatMessage({ id: 'footer.location' })}
+                            {Location} 
+                            <div>
+                                {intl.formatMessage({ id: 'footer.address' })}:
+                                <p>{intl.formatMessage({ id: 'footer.location' })}</p>
+                            </div>
                         </a>
                     </div>
                 </div>
