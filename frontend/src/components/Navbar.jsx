@@ -30,8 +30,8 @@ function Navbar({ switchLocale, locale }) {
     const navLinks = [
         { to: "/", id: "nav.home" },
         { to: "/products", id: "nav.products" },
-        { to: "#contact", id: "nav.contact" },
         { to: "/about", id: "nav.about" },
+        { to: "#contact", id: "nav.contact" },
     ];
 
     const renderNavLinks = () => (
