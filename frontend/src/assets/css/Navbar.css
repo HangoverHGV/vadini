@@ -1,0 +1,279 @@
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Pushes the brand, links, and profile to the ends */
+    align-items: center;
+    height: var(--navbar-height);
+    padding: 0 20px;
+    background-color: var(--background-color);
+    border-bottom: 1px solid #dddddd00; /* A subtle separation */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Optional subtle shadow */
+}
+
+/* --- Brand/Logo Styling --- */
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--primary-text-color);
+    /* Mimics the darker color of the icon in the image */
+}
+.logo-img {
+    height: 50px; /* Adjust the height as needed */
+    margin-right: 10px;
+}
+
+.logo-text {
+    /* Slightly lighter text color to match the image */
+    color: #444; 
+}
+
+/* --- Navigation Links Styling --- */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+    margin-right: auto;
+}
+
+
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--secondary-text-color);
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    font-size: 0.95rem;
+}
+
+.nav-links li a:hover {
+    background-color: var(--link-hover-color);
+    color: var(--primary-text-color);
+}
+
+.nav-icon {
+    margin-right: 5px;
+    font-size: 1rem; 
+}
+
+/* --- Right Section & Profile --- */
+.navbar-right-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto; /* Pushes this section to the right */
+}
+
+.nav-button {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid transparent;
+}
+
+.nav-button {
+    color: var(--secondary-text-color);
+    border-color: #d1d5db; /* A light gray border */
+}
+
+.nav-button:hover {
+    background-color: #f9fafb; /* A very light gray */
+    color: var(--primary-text-color);
+}
+
+.nav-button-primary {
+    background-color: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+}
+
+.nav-button-primary:hover {
+    background-color: #2563eb;
+    color: white;
+}
+
+/* --- Hamburger Menu & Mobile Nav --- */
+.hamburger-menu {
+    display: none; /* Hidden by default */
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    z-index: 1101; /* Above overlay */
+}
+
+.hamburger-menu .bar1, .hamburger-menu .bar2, .hamburger-menu .bar3 {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+.hamburger-menu.open .bar1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-menu.open .bar2 {
+    opacity: 0;
+}
+
+.hamburger-menu.open .bar3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #222; /* Dark background to match footer */
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.mobile-language-dropdown {
+    display: none; /* Hidden by default, shown in mobile overlay */
+    margin-top: 30px; /* Space above the language dropdown in mobile menu */
+    position: relative; /* Needed for dropdown-menu positioning */
+}
+
+
+.mobile-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.mobile-nav-links li {
+    margin: 20px 0;
+}
+
+.mobile-nav-links li a {
+    text-decoration: none;
+    color: var(--primary-text-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.2s;
+}
+
+.mobile-nav-links li a:hover {
+    color: #3b82f6;
+}
+
+.language-button{
+    color: white;
+    background-color: #4e4c4c;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid transparent;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.language-button:hover {
+    background-color: #868282;
+    color: white;
+}
+
+/* --- Language Dropdown --- */
+.language-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.language-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.language-button .locale-text {
+    display: inline-block;
+    width: 22px; /* Ensures consistent width */
+    text-align: left;
+}
+
+.language-button .dropdown-arrow {
+    margin-left: 8px;
+    font-size: 0.7em;
+}
+
+.dropdown-menu {
+    display: block;
+    position: absolute;
+    background-color: #333; /* Darker background */
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 4px;
+    right: 0; /* Align to the right of the button */
+    margin-top: 5px;
+    overflow: hidden; /* Ensures border-radius is respected by children */
+}
+
+.dropdown-menu a {
+    color: white; /* White text for readability */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropdown-menu a:hover {
+    background-color: #444; /* Lighter dark on hover */
+}
+
+
+/* --- Responsive Breakpoints --- */
+@media (max-width: 820px) {
+    .nav-links {
+        display: none; /* Hide desktop links */
+    }
+
+    .desktop-language-dropdown {
+        display: none; /* Hide desktop language selector */
+    }
+
+    .mobile-language-dropdown {
+        display: inline-block; /* Show mobile language selector in the overlay */
+    }
+
+    .navbar-right-section { 
+        display: none; /* Hide the entire right section on mobile */
+    }
+
+    .hamburger-menu {
+        display: block; /* Show hamburger menu */
+        order: 3;
+        margin-left: auto;
+    }
+
+    @media (max-width: 480px) {
+        .logo-img {
+            height: 40px;
+        }
+    }
+}

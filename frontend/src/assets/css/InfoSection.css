@@ -1,0 +1,30 @@
+.info-section-container {
+    padding: 60px 20px;
+    text-align: left;
+}
+
+.info-section-container.container-white {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.info-section-container.container-black {
+    background-color: #222222;
+    color: #f0f0f0;
+}
+
+.info-section-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.info-section-content h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.info-section-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+}

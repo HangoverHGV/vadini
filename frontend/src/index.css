@@ -1,0 +1,47 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --primary-color: #00bcd4; /* Accent color */
+  --text-color: #ffffff;
+  --bg-color: #000000;
+  --max-width: 1200px;
+}
+
+
+.container {
+    width: 90%; /* Sets a fluid width for smaller screens */
+    max-width: 1200px; /* Limits the container's width on larger screens */
+    margin-left: auto; /* Centers the container */
+    margin-right: auto; /* Centers the container */
+    padding: 0 15px; /* Adds internal padding to prevent content from touching the edges */
+}
+
+.container-black{
+  background-color: black;
+  color: white;
+  margin-top: 5px;
+  border-radius: 10px;
+  overflow-x: hidden;
+}
+
+.container-white{
+  background-color: white;
+  color: black;
+  margin-top: 5px;
+  border-radius: 10px;
+  overflow-x: hidden;
+}
+
+
+

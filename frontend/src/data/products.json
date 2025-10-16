@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "imageKey": "product-image-1",
+    "titleId": "product.slide1.title",
+    "textId": "product.slide1.text"
+  },
+  {
+    "id": 2,
+    "imageKey": "product-image-2",
+    "titleId": "product.slide2.title",
+    "textId": "product.slide2.text"
+  },
+  {
+    "id": 3,
+    "imageKey": "product-image-3",
+    "titleId": "product.slide3.title",
+    "textId": "product.slide3.text"
+  },
+  {
+    "id": 4,
+    "imageKey": "product-image-4",
+    "titleId": "product.slide4.title",
+    "textId": "product.slide4.text"
+  },
+  {
+    "id": 5,
+    "imageKey": "product-image-5",
+    "titleId": "product.slide5.title",
+    "textId": "product.slide5.text"
+  },
+  {
+    "id": 6,
+    "imageKey": "product-image-6",
+    "titleId": "product.slide6.title",
+    "textId": "product.slide6.text"
+  },
+  {
+    "id": 7,
+    "imageKey": "product-image-7",
+    "titleId": "product.slide7.title",
+    "textId": "product.slide7.text"
+  },
+  {
+    "id": 8,
+    "imageKey": "product-image-8",
+    "titleId": "product.slide8.title",
+    "textId": "product.slide8.text"
+  },
+  {
+    "id": 9,
+    "imageKey": "product-image-9",
+    "titleId": "product.slide9.title",
+    "textId": "product.slide9.text"
+  },
+    {
+    "id": 10,
+    "imageKey": "product-image-10",
+    "titleId": "product.slide10.title",
+    "textId": "product.slide10.text"
+  }
+]

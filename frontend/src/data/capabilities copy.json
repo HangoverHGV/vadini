@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "titleId": "capabilities.demolition.title",
+    "descriptionId": "capabilities.demolition.description",
+    "imageKey": "container"
+  },
+  {
+    "id": 2,
+    "titleId": "capabilities.trailers.title",
+    "descriptionId": "capabilities.trailers.description",
+    "imageKey": "trailer"
+  },
+  {
+    "id": 3,
+    "titleId": "capabilities.hoists.title",
+    "descriptionId": "capabilities.hoists.description",
+    "imageKey": "hoist"
+  },
+  {
+    "id": 4,
+    "titleId": "capabilities.repair.title",
+    "descriptionId": "capabilities.repair.description",
+    "imageKey": "repair"
+  }
+]

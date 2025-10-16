@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "titleId": "capabilities.demolition.title",
+    "descriptionId": "capabilities.demolition.description",
+    "imageKey": "container"
+  },
+  {
+    "id": 2,
+    "titleId": "capabilities.simulation.title",
+    "descriptionId": "capabilities.simulation.description",
+    "imageKey": "simulation"
+  }
+]

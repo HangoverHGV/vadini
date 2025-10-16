@@ -1,0 +1,144 @@
+/* --- Global & Container Styles --- */
+.capabilities-section {
+  padding: 80px 0;
+  background-color: #ffffff; /* White background for the whole section */
+}
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  /* Two columns: Image (60%) and Text/List (40%) */
+  grid-template-columns: 3fr 2fr; 
+  gap: 60px;
+  align-items: center;
+}
+
+/* --- Left Side: Image Column --- */
+.image-column {
+  overflow: hidden;
+  /* The black and white filter is applied to match the image in the prompt */
+  overflow: hidden; /* Clips the image if it's larger than the container */
+  max-height: 500px; /* Set a maximum height for the image container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.capability-image {
+  width: 100%;
+  height: auto;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+  display: block;
+}
+
+/* --- Right Side: Text Column --- */
+.section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 40px;
+  color: #000000;
+}
+
+/* --- Capabilities List --- */
+.capabilities-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.capability-item {
+  padding: 15px 0;
+  border-top: 1px solid #e0e0e0; /* Separator line */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The last item needs a bottom border */
+.capabilities-list .capability-item:last-child {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.item-number {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #999999;
+  position: absolute;
+  left: -20px; /* Bring the number a bit closer */
+  top: 18px;
+}
+
+.item-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #000000;
+  margin-left: 10px; /* Reduce space for the vertical line */
+}
+
+/* --- Active Item Styling --- */
+.capability-item.active {
+  color: #000000; /* Ensure active title is black */
+}
+
+/* The key feature: Vertical line and box around the active item */
+.capability-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px; /* Vertical line thickness */
+  background-color: #00bcd4; /* Accent color */
+}
+
+.capability-item.active .item-number {
+  color: #00bcd4; /* Change number color for active state */
+}
+
+.item-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555555;
+  margin-top: 10px;
+  margin-left: 20px; /* Aligns with the title */
+  padding-right: 20px; /* Prevents text from hitting the edge */
+  /* The description is part of the 'box' style in the image */
+  border: 1px solid #e0e0e0; 
+  padding: 15px;
+  margin-top: 15px;
+  /* Reset border on the side where the vertical active line is */
+  border-left: none; 
+}
+
+/* --- Responsive Adjustments (Optional) --- */
+@media (max-width: 992px) {
+  .content-container {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    gap: 40px;
+  }
+
+  .image-column {
+    order: 1; /* Keep the image at the top */
+    max-width: 500px; /* Constrain image width on mobile */
+    margin: 0 auto; /* Center the image container */
+  }
+  .capability-image {
+  width: 80%;
+  height: auto;
+}
+
+  .text-column {
+    order: 2;
+  }
+
+  @media (max-width: 480px) {
+    .section-title {
+      font-size: 2.5rem;
+    }
+  }
+}
