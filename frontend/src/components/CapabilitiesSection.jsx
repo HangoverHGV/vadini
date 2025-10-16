@@ -14,8 +14,15 @@ export default function CapabilitiesSection() {
     useEffect(() => {
         let isMounted = true;
         const loadImage = async () => {
-            // Dynamically import the image based on the active capability's imageKey
-            const imageModule = await import(`../assets/images/${activeCapability.imageKey}.png`);
+            let imageModule;
+            try {
+                // Try loading .png first
+                imageModule = await import(`../assets/images/${activeCapability.imageKey}.png`);
+            } catch (error) {
+                // If .png fails, try loading .jpg
+                imageModule = await import(`../assets/images/${activeCapability.imageKey}.jpg`);
+            }
+
             if (isMounted) {
                 setImageSrc(imageModule.default);
             }

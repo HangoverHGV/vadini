@@ -7,20 +7,8 @@
   },
   {
     "id": 2,
-    "titleId": "capabilities.trailers.title",
-    "descriptionId": "capabilities.trailers.description",
-    "imageKey": "trailer"
-  },
-  {
-    "id": 3,
-    "titleId": "capabilities.hoists.title",
-    "descriptionId": "capabilities.hoists.description",
-    "imageKey": "hoist"
-  },
-  {
-    "id": 4,
-    "titleId": "capabilities.repair.title",
-    "descriptionId": "capabilities.repair.description",
-    "imageKey": "repair"
+    "titleId": "capabilities.simulation.title",
+    "descriptionId": "capabilities.simulation.description",
+    "imageKey": "simulation"
   }
 ]
