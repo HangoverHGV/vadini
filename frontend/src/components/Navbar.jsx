@@ -31,6 +31,7 @@ function Navbar({ switchLocale, locale }) {
         { to: "/", id: "nav.home" },
         { to: "/products", id: "nav.products" },
         { to: "#contact", id: "nav.contact" },
+        { to: "/about", id: "nav.about" },
     ];
 
     const renderNavLinks = () => (
