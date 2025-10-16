@@ -8,13 +8,27 @@ import roMessages from './locales/ro.json';
 import Layout from './components/Layout'
 import Home from './pages/Home'
 
-function App() {
+// Define messages outside the component to prevent re-creation on every render
+const messages = {
+  'en': enMessages,
+  'ro': roMessages,
+};
 
-  const [locale, setLocale] = useState(localStorage.getItem('language') || 'en');
-  const messages = {
-    'en': enMessages,
-    'ro': roMessages,
-  };
+// Function to determine the best initial locale
+const getInitialLocale = () => {
+  const savedLocale = localStorage.getItem('language');
+  if (savedLocale && messages[savedLocale]) {
+    return savedLocale;
+  }
+  const browserLang = navigator.language.split('-')[0]; // e.g., 'en-US' -> 'en'
+  if (messages[browserLang]) {
+    return browserLang;
+  }
+  return 'en'; // Default fallback
+};
+
+function App() {
+  const [locale, setLocale] = useState(getInitialLocale);
 
   // Save locale to localStorage whenever it changes
   useEffect(() => {
@@ -26,17 +40,15 @@ function App() {
   };
 
   return (
-    <>
-      <BrowserRouter>
-        <IntlProvider locale={locale} messages={messages[locale]}>
-          <Routes >
-            <Route element={<Layout switchLocale={switchLocale} locale={locale} />}>
-              <Route path='/' element={<Home />} />
-            </Route>
-          </Routes>
-        </IntlProvider>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <IntlProvider locale={locale} messages={messages[locale]}>
+        <Routes >
+          <Route element={<Layout switchLocale={switchLocale} locale={locale} />}>
+            <Route path='/' element={<Home />} />
+          </Route>
+        </Routes>
+      </IntlProvider>
+    </BrowserRouter>
   )
 }
 

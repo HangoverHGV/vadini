@@ -5,7 +5,7 @@ import "../assets/css/Navbar.css"
 import UkFlag from '../assets/images/flags/UkFlag';
 import RomanianFlag from '../assets/images/flags/RomanianFlag';
 
-function Navabar({ switchLocale, locale }) {
+function Navbar({ switchLocale, locale }) {
     const intl = useIntl();
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,23 +29,46 @@ function Navabar({ switchLocale, locale }) {
 
     const navLinks = [
         { to: "/services", id: "nav.services" },
-        { to: "/contact", id: "nav.contact" },
+        { to: "#contact", id: "nav.contact" },
     ];
 
-        const renderNavLinks = () => (
+    const renderNavLinks = () => (
         navLinks.map(link => (
             <li key={link.to}>
-                <NavLink to={link.to} onClick={() => setMobileMenuOpen(false)}>
-                    {intl.formatMessage({ id: link.id })}
-                </NavLink>
+                {link.to.startsWith('#') ? (
+                    <a href={link.to} onClick={() => setMobileMenuOpen(false)}>
+                        {intl.formatMessage({ id: link.id })}
+                    </a>
+                ) : (
+                    <NavLink to={link.to} onClick={() => setMobileMenuOpen(false)} end>
+                        {intl.formatMessage({ id: link.id })}
+                    </NavLink>
+                )}
             </li>
         ))
     );
 
+    const renderLanguageDropdown = (isMobile = false) => (
+        <div className={`language-dropdown ${isMobile ? 'mobile-language-dropdown' : 'desktop-language-dropdown'}`} ref={!isMobile ? dropdownRef : null}>
+            <button className="language-button" onClick={() => setDropdownOpen(!isDropdownOpen)}>
+                {languageConfig[locale].flag}
+                <span className="locale-text">{locale.toUpperCase()}</span>
+                <span className="dropdown-arrow">{isDropdownOpen ? '▲' : '▼'}</span>
+            </button>
+            {isDropdownOpen && (
+                <div className="dropdown-menu">
+                    {Object.keys(languageConfig).map((lang) => (
+                        <a key={lang} href="#" onClick={(e) => { e.preventDefault(); switchLocale(lang); setDropdownOpen(false); setMobileMenuOpen(false); }}>
+                            {languageConfig[lang].flag}
+                            <span>{languageConfig[lang].name}</span>
+                        </a>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
 
     return (
-        <>
-
         <div className="container">
             <nav className="navbar">
             <Link to="/" className="navbar-brand">
@@ -54,42 +77,31 @@ function Navabar({ switchLocale, locale }) {
             <ul className="nav-links">
                 {renderNavLinks()}
             </ul>
+            <button
+                className={`hamburger-menu ${isMobileMenuOpen ? 'open' : ''}`}
+                onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={intl.formatMessage({ id: 'nav.toggleMenu' })}
+            >
+                <div className="bar1"></div>
+                <div className="bar2"></div>
+                <div className="bar3"></div>
+            </button>
             <div className="navbar-right-section">
-                <button className={`hamburger-menu ${isMobileMenuOpen ? 'open' : ''}`} onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}>
-                    <div className="bar1"></div>
-                    <div className="bar2"></div>
-                    <div className="bar3"></div>
-                </button>
-
-                    <div className="language-dropdown" ref={dropdownRef}>
-                        <button className="language-button" onClick={() => setDropdownOpen(!isDropdownOpen)}>
-                            {languageConfig[locale].flag}
-                            <span className="locale-text">{locale.toUpperCase()}</span>
-                            <span className="dropdown-arrow">{isDropdownOpen ? '▲' : '▼'}</span>
-                        </button>
-                        {isDropdownOpen && (
-                            <div className="dropdown-menu">
-                                {Object.keys(languageConfig).map((lang) => (
-                                    <a key={lang} href="#" onClick={() => { switchLocale(lang); setDropdownOpen(false); }}>
-                                        {languageConfig[lang].flag}
-                                        <span>{languageConfig[lang].name}</span>
-                                    </a>
-                                ))}
-                            </div>
-                        )}
-                    </div>
+                {/* Language dropdown for desktop */}
+                {renderLanguageDropdown()}
             </div>
             {isMobileMenuOpen && (
                 <div className="mobile-nav-overlay">
                     <ul className="mobile-nav-links">
                         {renderNavLinks()}
                     </ul>
+                    {/* Language dropdown for mobile */}
+                    {renderLanguageDropdown(true)}
                 </div>
             )}
             </nav>
         </div>
-        </>
     )
 }
 
-export default Navabar;
+export default Navbar;

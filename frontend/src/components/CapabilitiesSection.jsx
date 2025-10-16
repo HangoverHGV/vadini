@@ -37,7 +37,7 @@ export default function CapabilitiesSection() {
   };
 
   return (
-    <section className="capabilities-section">
+    <section id="services" className="capabilities-section">
       <div className="content-container">
 
         {/* Left Side: Image */}

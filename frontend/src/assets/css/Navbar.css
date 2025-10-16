@@ -112,7 +112,7 @@
 .hamburger-menu .bar1, .hamburger-menu .bar2, .hamburger-menu .bar3 {
     width: 25px;
     height: 3px;
-    background-color: var(--primary-text-color);
+    background-color: var(--primary-color);
     margin: 5px 0;
     transition: 0.4s;
 }
@@ -135,13 +135,19 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.98);
+    background-color: #222; /* Dark background to match footer */
     z-index: 1100;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+.mobile-language-dropdown {
+    display: none; /* Hidden by default, shown in mobile overlay */
+    margin-top: 30px; /* Space above the language dropdown in mobile menu */
+    position: relative; /* Needed for dropdown-menu positioning */
+}
+
 
 .mobile-nav-links {
     list-style: none;
@@ -214,7 +220,7 @@
 .dropdown-menu {
     display: block;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #333; /* Darker background */
     min-width: 120px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -225,7 +231,7 @@
 }
 
 .dropdown-menu a {
-    color: black;
+    color: white; /* White text for readability */
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -237,7 +243,7 @@
 }
 
 .dropdown-menu a:hover {
-    background-color: #f1f1f1;
+    background-color: #444; /* Lighter dark on hover */
 }
 
 
@@ -247,11 +253,27 @@
         display: none; /* Hide desktop links */
     }
 
-    .navbar-right-section {
-        margin-left: auto; /* Ensure it stays on the right */
+    .desktop-language-dropdown {
+        display: none; /* Hide desktop language selector */
+    }
+
+    .mobile-language-dropdown {
+        display: inline-block; /* Show mobile language selector in the overlay */
+    }
+
+    .navbar-right-section { 
+        display: none; /* Hide the entire right section on mobile */
     }
 
     .hamburger-menu {
         display: block; /* Show hamburger menu */
+        order: 3;
+        margin-left: auto;
+    }
+
+    @media (max-width: 480px) {
+        .logo-img {
+            height: 40px;
+        }
     }
 }

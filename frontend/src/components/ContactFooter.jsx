@@ -1,5 +1,4 @@
 import { useIntl } from 'react-intl';
-import { Link } from 'react-router-dom';
 import '../assets/css/ContactFooter.css';
 import Envelope from '../assets/images/flags/helper_images.jsx'
 import {WhatsApp, Phone} from '../assets/images/flags/helper_images.jsx'
@@ -13,7 +12,7 @@ export default function ContactFooter() {
     const phoneNumber = '+40773330210'; // TODO: Replace with actual phone number (include country code, no spaces or hyphens)
 
     return (
-        <footer className="contact-footer">
+        <footer id="contact" className="contact-footer">
             <div className="footer-content">
                 <div className="footer-section">
                     <h3>{intl.formatMessage({ id: 'footer.contactUs' })}</h3>
@@ -22,8 +21,8 @@ export default function ContactFooter() {
                 <div className="footer-section">
                     <h4>{intl.formatMessage({ id: 'footer.quickLinks' })}</h4>
                     <ul>
-                        <li><Link to="/services">{intl.formatMessage({ id: 'nav.services' })}</Link></li>
-                        <li><Link to="/contact">{intl.formatMessage({ id: 'nav.contact' })}</Link></li>
+                        <li><a href="#services">{intl.formatMessage({ id: 'nav.services' })}</a></li>
+                        <li><a href="#contact">{intl.formatMessage({ id: 'nav.contact' })}</a></li>
                         {/* Add more links as needed, e.g., to Home, About, etc. */}
                     </ul>
                 </div>
