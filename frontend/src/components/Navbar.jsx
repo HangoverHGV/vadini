@@ -8,7 +8,7 @@ import RomanianFlag from '../assets/images/flags/RomanianFlag';
 function Navbar({ switchLocale, locale }) {
     const intl = useIntl();
     const [isDropdownOpen, setDropdownOpen] = useState(false);
-    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);    const [isMobileDropdownOpen, setMobileDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
 
     // Close dropdown when clicking outside
@@ -28,6 +28,7 @@ function Navbar({ switchLocale, locale }) {
     };
 
     const navLinks = [
+        { to: "/", id: "nav.home" },
         { to: "/products", id: "nav.products" },
         { to: "#contact", id: "nav.contact" },
     ];
@@ -50,15 +51,15 @@ function Navbar({ switchLocale, locale }) {
 
     const renderLanguageDropdown = (isMobile = false) => (
         <div className={`language-dropdown ${isMobile ? 'mobile-language-dropdown' : 'desktop-language-dropdown'}`} ref={!isMobile ? dropdownRef : null}>
-            <button className="language-button" onClick={() => setDropdownOpen(!isDropdownOpen)}>
+            <button className="language-button" onClick={() => isMobile ? setMobileDropdownOpen(!isMobileDropdownOpen) : setDropdownOpen(!isDropdownOpen)}>
                 {languageConfig[locale].flag}
                 <span className="locale-text">{locale.toUpperCase()}</span>
-                <span className="dropdown-arrow">{isDropdownOpen ? '▲' : '▼'}</span>
+                <span className="dropdown-arrow">{(isMobile ? isMobileDropdownOpen : isDropdownOpen) ? '▲' : '▼'}</span>
             </button>
-            {isDropdownOpen && (
+            {(isMobile ? isMobileDropdownOpen : isDropdownOpen) && (
                 <div className="dropdown-menu">
                     {Object.keys(languageConfig).map((lang) => (
-                        <a key={lang} href="#" onClick={(e) => { e.preventDefault(); switchLocale(lang); setDropdownOpen(false); setMobileMenuOpen(false); }}>
+                        <a key={lang} href="#" onClick={(e) => { e.preventDefault(); switchLocale(lang); setDropdownOpen(false); setMobileMenuOpen(false); setMobileDropdownOpen(false); }}>
                             {languageConfig[lang].flag}
                             <span>{languageConfig[lang].name}</span>
                         </a>

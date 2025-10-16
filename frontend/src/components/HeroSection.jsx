@@ -1,6 +1,9 @@
 import { useIntl } from 'react-intl';
 import "../assets/css/Hero.css";
-import welderImage from '../assets/images/welder.png';
+// import welderImage from '../assets/images/welder.png';
+import welderImage from '../assets/images/welder2.jpg';
+// import welderImage from '../assets/images/welder.jpg';
+
 
 export default function HeroSection(){
     const intl = useIntl();

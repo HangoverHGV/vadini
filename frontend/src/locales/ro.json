@@ -3,6 +3,7 @@
   "hero.precision": "Rezistență",
   "hero.steel_craft": "în fiecare detaliu",
   "hero.subtitle": "Soluții de sudură pentru echipamente industriale, fabricație personalizată și construcții din oțel de mare tonaj",
+  "nav.home": "Acasă",
   "nav.services": "Servicii",
   "nav.contact": "Contact",
   "nav.products": "Produse",
@@ -39,13 +40,17 @@
   "product.slide8.text": " ",
   "product.slide9.title":" ",
   "product.slide9.text": " ",
+  "product.slide10.title":" ",
+  "product.slide10.text": " ",
   "footer.contactUs": "Contactați-ne",
   "footer.getInTouch": "Luați legătura cu noi pentru întrebări sau suport.",
   "footer.quickLinks": "Link-uri rapide",
   "footer.reachOut": "Contact",
-  "footer.emailUs": "Trimiteți-ne un email",
-  "footer.whatsappUs": "Contactați-ne pe WhatsApp",
+  "footer.emailUs": "E-mail",
+  "footer.whatsappUs": "WhatsApp",
   "footer.companyName": "Sudură si montaj",
   "footer.allRightsReserved": "Toate drepturile rezervate.",
-  "footer.callUs": "Sunați-ne"
+  "footer.callUs": "Telefon",
+  "footer.address": "Adresa",
+  "footer.location": "Str. Victoriei, nr. 40, Seini, Maramureș, România"
 }

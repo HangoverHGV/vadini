@@ -52,5 +52,11 @@
     "imageKey": "product-image-9",
     "titleId": "product.slide9.title",
     "textId": "product.slide9.text"
+  },
+    {
+    "id": 10,
+    "imageKey": "product-image-10",
+    "titleId": "product.slide10.title",
+    "textId": "product.slide10.text"
   }
 ]
