@@ -28,7 +28,7 @@ function Navbar({ switchLocale, locale }) {
     };
 
     const navLinks = [
-        { to: "/services", id: "nav.services" },
+        { to: "/products", id: "nav.products" },
         { to: "#contact", id: "nav.contact" },
     ];
 

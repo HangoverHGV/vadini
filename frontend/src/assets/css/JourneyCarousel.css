@@ -1,0 +1,59 @@
+.journey-carousel-section {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.journey-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: var(--primary-text-color);
+}
+
+.journey-slide {
+    position: relative;
+    height: 500px; /* Set a consistent height for all slides */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0; /* A light background for letterboxing */
+    color: white;
+}
+
+.journey-slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* This ensures the whole image fits without being cropped */
+    object-position: center; /* Center the image within the slide area */
+}
+
+.text-overlay {
+    position: absolute; /* Position overlay on top of the image */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px 40px;
+    border-radius: 8px;
+    max-width: 80%;
+    text-align: center;
+}
+
+.text-overlay h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.text-overlay p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .journey-slide {
+        height: 350px; /* Adjust height for mobile devices */
+    }
+}

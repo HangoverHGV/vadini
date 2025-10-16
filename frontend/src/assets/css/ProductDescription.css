@@ -1,0 +1,15 @@
+.product-description-container {
+    padding: 60px 20px;
+    background-color: #222; /* Matching the container-black idea */
+    color: #f0f0f0;
+    text-align: left;
+    max-width: 800px;
+    margin: 40px auto;
+    border-radius: 8px;
+}
+
+.product-description-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    white-space: pre-wrap; /* To respect newlines in the description text */
+}
