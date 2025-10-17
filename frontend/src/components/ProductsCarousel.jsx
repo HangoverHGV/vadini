@@ -5,38 +5,27 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'; // imports defau
 import '../assets/css/JourneyCarousel.css'; // imports our custom styles
 import productsData from '../data/products.json';
 
-const Slide = ({ item, imageFolder }) => {
+const Slide = ({ item, imageFolder, isFirstSlide }) => {
     const intl = useIntl();
-    const [imageSrc, setImageSrc] = useState('');
-
-    useEffect(() => {
-        const loadImage = async () => {
-            let imageModule;
-            try {
-                // Try loading .png first
-                imageModule = await import(`../assets/images/products/${imageFolder}/${item.imageKey}.png`);
-            } catch (error) {
-                // If .png fails, try loading .jpg
-                imageModule = await import(`../assets/images/products/${imageFolder}/${item.imageKey}.jpg`);
-            }
-            setImageSrc(imageModule.default);
-        };
-        loadImage();
-    }, [item.imageKey, imageFolder]);
+    // We'll assume the images are JPGs for simplicity. If you have mixed types,
+    // it's best to include the extension in your products.json data.
+    const imageSrc = `/src/assets/images/products/${imageFolder}/${item.imageKey}.${item.imageExtension}`;
 
     return (
         <div className="journey-slide">
-            {imageSrc && (
-                <img 
-                    src={imageSrc} 
-                    alt={intl.formatMessage({ id: item.titleId, defaultMessage: 'Product image' })} 
-                    className="journey-slide-image" 
-                />
-            )}
-            {/* <div className="text-overlay">
-                <h2>{intl.formatMessage({ id: item.titleId })}</h2>
-                <p>{intl.formatMessage({ id: item.textId })}</p>
-            </div> */}
+            <img 
+                src={imageSrc} 
+                alt={intl.formatMessage({ id: item.titleId, defaultMessage: 'Product image' })} 
+                className="journey-slide-image"
+                // Add the loading attribute.
+                // Load the first image eagerly so it's visible immediately.
+                // Lazy load all subsequent images in the carousel.
+                loading={isFirstSlide ? 'eager' : 'lazy'}
+                // Providing dimensions helps the browser reserve space and
+                // prevents content from jumping as images load.
+                width="800"
+                height="600"
+            />
         </div>
     );
 };
@@ -56,8 +45,8 @@ const ProductsCarousel = ({ title, imageFolder }) => {
                 interval={5000}
                 dynamicHeight={true}
             >
-                {productsData.map(item => (
-                    <Slide key={item.id} item={item} imageFolder={imageFolder} />
+                {productsData.map((item, index) => (
+                    <Slide key={item.id} item={item} imageFolder={imageFolder} isFirstSlide={index === 0} />
                 ))}
             </Carousel>
         </section>

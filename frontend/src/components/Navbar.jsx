@@ -23,8 +23,8 @@ function Navbar({ switchLocale, locale }) {
     }, [dropdownRef]);
 
     const languageConfig = {
-        en: { name: 'English', flag: <UkFlag /> },
         ro: { name: 'Romanian', flag: <RomanianFlag /> },
+        en: { name: 'English', flag: <UkFlag /> },
     };
 
     const navLinks = [

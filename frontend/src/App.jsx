@@ -26,7 +26,7 @@ const getInitialLocale = () => {
   if (messages[browserLang]) {
     return browserLang;
   }
-  return 'en'; // Default fallback
+  return 'ro'; // Default fallback
 };
 
 function App() {
