@@ -1,6 +1,6 @@
 services:
   app:
-    image: hangoverhgv/vadini:1.1
+    image: hangoverhgv/vadini:1.2
     container_name: Frontend-Vadini
     ports:
       - "5174:80"
