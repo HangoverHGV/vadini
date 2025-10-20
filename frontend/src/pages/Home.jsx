@@ -7,8 +7,10 @@ export default function Home(){
     const intl = useIntl();
 
     return <>
+
+
         {/* --- Standard SEO Meta Tags (React 19) --- */}
-        <title>Sudura si Montaj Profesional - Acasa | SuduraSimontaj.com</title>
+        <title>Sudura si Montaj - Acasa | SuduraSimontaj.com</title>
         <meta 
             name="description" 
             content="Oferim servicii profesionale de sudura si montaj. Calitate garantata si preturi competitive pentru proiectele dumneavoastra." 
