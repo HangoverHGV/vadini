@@ -30,7 +30,7 @@ export default function Home(){
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
             "name": "Sudura si Montaj",
-            "image": "https://www.sudurasimontaj.com/path/to/your/logo.png",
+            "image": "https://sudurasimontaj.com/logo.png",
             "@id": "https://www.sudurasimontaj.com/",
             "url": "https://www.sudurasimontaj.com/",
             "telephone": "+40-773-330-210",
