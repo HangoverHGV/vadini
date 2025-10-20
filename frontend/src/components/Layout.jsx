@@ -6,6 +6,7 @@ import ContactFooter from './ContactFooter';
 export default function Layout({ switchLocale, locale }) {
     return (
         <>
+        <html lang={locale} />
             <div>
                 <Navabar switchLocale={switchLocale} locale={locale} />
                 <Outlet />
