@@ -27,7 +27,6 @@ const getInitialLocale = () => {
 
 function App() {
   const [locale, setLocale] = useState(getInitialLocale);
-  console.log("Locale:", locale);
 
   // Save locale to localStorage whenever it changes
   useEffect(() => {
