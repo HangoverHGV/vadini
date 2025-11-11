@@ -7,6 +7,8 @@
     background-color: var(--background-color);
     border-bottom: 1px solid #dddddd00; /* A subtle separation */
     box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Optional subtle shadow */
+    position: relative; /* Ensure it creates a stacking context */
+    z-index: 10; /* Give it a higher z-index to be on top of other content */
 }
 
 /* --- Brand/Logo Styling --- */
