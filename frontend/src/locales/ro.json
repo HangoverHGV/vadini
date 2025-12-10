@@ -60,6 +60,29 @@
       ]
     }
   ],
+    "contact":{
+    "title": "Contactează-ne",
+    "title.meta": "Contact",
+    "description.meta": "Ia legătura cu noi pentru orice întrebări sau solicitări legate de serviciile și produsele noastre de confecții metalice, containere de moloz, cupe de excavator personalizate și reparații prin sudură profesională.",
+    "contactForm": {
+    "title": "Trimite-ne un mesaj",
+    "fullName": "Nume complet",
+    "email": "Adresă de e-mail",
+    "phoneNumber": "Număr de telefon",
+    "subject": "Subiect",
+    "message": "Mesaj",
+    "submit": "Trimite mesajul"
+    },
+    "contactDetails": {
+      "title": "Informații de contact",
+      "address": "Adresă",
+      "phone": "Telefon",
+      "email": "E-mail",
+      "whatsapp": ""
+    },
+    "workingHours": "Program de lucru",
+    "map": "Găsește-ne pe hartă"
+  },
   "about.description": "Suntem o companie specializată în confecții metalice, cu o vastă experiență în fabricarea containerelor de moloz, confecționarea cupelor de excavator și reparațiile prin sudură ale utilajelor de construcții. Prin munca noastră, îmbinăm forța metalului cu precizia tehnologiei moderne, pentru a oferi produse care rezistă în cele mai dure condiții de lucru.",
   "about.list.0.title": "Închiriere containere de moloz și deșeuri",
   "about.list.0.description": "Oferim servicii complete de închiriere containere pentru construcții, demolări și transport moloz, inclusiv containere de șantier pentru deșeuri menajere sau industriale.",

@@ -60,6 +60,29 @@
       ]
     }
   ],
+  "contact":{
+    "title": "Get in touch",
+    "title.meta": "Contact",
+    "description.meta": "Reach out to us for inquiries, quotes, or more information about our metalworking services and products.",
+    "contactForm": {
+    "title": "Send us a message",
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "phoneNumber": "Phone Number",
+    "subject": "Subject",
+    "message": "Your Message",
+    "submit": "Send message"
+    },
+    "contactDetails": {
+      "title": "Contact Information",
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email",
+      "whatsapp": "Chat with us"
+    },
+    "workingHours": "Working Hours",
+    "map": "Find us on the Map"
+  },
   "about.description": "We are a company specializing in metalworking, with extensive experience in manufacturing debris containers, custom-making excavator buckets, and providing welding repairs for construction equipment. Through our work, we combine the strength of metal with the precision of modern technology to offer products that withstand the toughest working conditions.",
   "about.list.0.title": "Debris and Waste Container Rental",
   "about.list.0.description": "We offer complete container rental services for construction, demolition, and debris transport, including site containers for household or industrial waste.",

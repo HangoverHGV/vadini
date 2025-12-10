@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Product from "./pages/Product";
 import Products from "./pages/Products";
 import AboutUs from "./pages/AboutUs";
+import Contact from "./pages/Contact";
 
 // Define messages outside the component to prevent re-creation on every render
 const messages = {
@@ -47,6 +48,7 @@ function App() {
           >
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:title" element={<Product />} />
           </Route>
