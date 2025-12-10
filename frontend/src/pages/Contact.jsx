@@ -162,35 +162,37 @@ const ContactContent = () => {
                                 <div className="info-icon">📍</div>
                                 <div className="info-content">
                                     <h3>{intl.formatMessage({ id: 'contact.contactDetails.address' })}</h3>
-                                    <p>{intl.formatMessage({ id: 'contact.contactDetails.address' })}</p>
+                                    <a href="https://maps.app.goo.gl/Cg9rA1FfZGkf4XSK7" target="_blank" rel="noopener noreferrer">Str. Victoriei, nr. 40, Seini, Maramureș, România</a>
                                 </div>
                             </div>
                             <div className="contact-info-item">
                                 <div className="info-icon">📞</div>
                                 <div className="info-content">
                                     <h3>{intl.formatMessage({ id: 'contact.contactDetails.phone' })}</h3>
-                                    <p>{intl.formatMessage({ id: 'contact.contactDetails.phone' })}</p>
+                                    <a href="tel:+40773330210">+40773330210</a>
                                 </div>
                             </div>
                             <div className="contact-info-item">
                                 <div className="info-icon">📧</div>
                                 <div className="info-content">
                                     <h3>{intl.formatMessage({ id: 'contact.contactDetails.email' })}</h3>
-                                    <p>{intl.formatMessage({ id: 'contact.contactDetails.email' })}</p>
+                                    <a href="mailto:contact@sudurasimontaj.com">contact@sudurasimontaj.com</a>
                                 </div>
                             </div>
                             <div className="contact-info-item">
                                 <div className="info-icon">💬</div>
                                 <div className="info-content">
                                     <h3>{intl.formatMessage({ id: 'contact.contactDetails.whatsapp' })}</h3>
-                                    <p>{intl.formatMessage({ id: 'contact.contactDetails.whatsapp' })}</p>
+                                    <a href="https://wa.me/+40773330210" target="_blank" rel="noopener noreferrer">WhatsApp: +40773330210</a>
                                 </div>
                             </div>
                         </div>
                         {/* Hours */}
                         <div className="contact-hours">
                             <h3>{intl.formatMessage({ id: 'contact.workingHours' })}</h3>
-                            <p>{intl.formatMessage({ id: 'contact.workingHours' })}</p>
+                            <div style={{ whiteSpace: 'pre-line', color: '#666', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                                {intl.formatMessage({ id: 'contact.workingHoursDetails' })}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -200,8 +202,8 @@ const ContactContent = () => {
                 <h2>{intl.formatMessage({ id: 'contact.map' })}</h2>
                 <div className="map-container">
                     <iframe
-                        title="Vadini Location"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2823.5897635462567!2d24.48!3d47.55!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474c3e00000000%3A0x0!2sSeini%2C%20Maramure%C8%99%2C%20Romania!5e0!3m2!1sen!2sro!4v1234567890"
+                        title="Sudura si Montaj Location"
+                        src="https://www.google.com/maps?q=Sudura+si+Montaj+Str.+Victoriei,+nr.+40,+Seini,+Maramureș,+România&output=embed"
                         width="100%"
                         height="400"
                         style={{ border: 0 }}

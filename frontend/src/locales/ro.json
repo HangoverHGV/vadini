@@ -78,9 +78,10 @@
       "address": "Adresă",
       "phone": "Telefon",
       "email": "E-mail",
-      "whatsapp": ""
+      "whatsapp": "Scrie-ne"
     },
     "workingHours": "Program de lucru",
+    "workingHoursDetails": "Luni - Vineri: 8:00 - 17:00\nSâmbătă - Duminică: Închis",
     "map": "Găsește-ne pe hartă"
   },
   "about.description": "Suntem o companie specializată în confecții metalice, cu o vastă experiență în fabricarea containerelor de moloz, confecționarea cupelor de excavator și reparațiile prin sudură ale utilajelor de construcții. Prin munca noastră, îmbinăm forța metalului cu precizia tehnologiei moderne, pentru a oferi produse care rezistă în cele mai dure condiții de lucru.",
