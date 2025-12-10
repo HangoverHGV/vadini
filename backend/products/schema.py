@@ -1,5 +1,3 @@
-from pydantic import BaseModel
-from typing import Optional, List
 from pydantic import BaseModel, Field
 from typing import List
 from datetime import datetime
@@ -29,9 +27,6 @@ class ProductFeatureCreate(BaseModel):
 
 
 class ProductCreate(BaseModel):
-    translation: dict
-    features: dict
-    images: 
     translation: ProductTranslationCreate
     features: List[ProductFeatureCreate] = Field(..., min_length=1)
 
