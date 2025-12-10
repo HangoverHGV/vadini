@@ -7,7 +7,7 @@ from helpers import active_user_required, superuser_required, process_and_save_i
 import json
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import contains_eager, subqueryload
-from schema import ProductCreate, ProductRead
+from products.schema import ProductCreate, ProductRead
 
 
 router = APIRouter()

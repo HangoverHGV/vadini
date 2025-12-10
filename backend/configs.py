@@ -82,7 +82,8 @@ app = FastAPI(swagger_ui_parameters=SWAGGER_UI_PARAMETERS, swagger_ui_init_oauth
 
 ## Cors
 
-is_prod = getenv("IS_PROD")
+is_prod = getenv("PRODUCTION")
+print(is_prod)
 
 if is_prod:
     origins = [
@@ -122,7 +123,7 @@ def get_db():
 
 # MEDIA PATH
 
-HTML_PATH = path.join(getcwd(), 'html')
+HTML_PATH = path.join(getcwd(), 'website')
 IMAGES_PATH = path.join(getcwd(), 'images')
 IMAGES_LARGE = path.join(IMAGES_PATH, 'large')
 IMAGES_MEDIUM = path.join(IMAGES_PATH, 'medium')

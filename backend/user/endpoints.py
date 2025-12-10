@@ -14,7 +14,6 @@ from configs import get_db, SessionLocal, ACCESS_TOKEN_EXPIRE_DAYS
 from fastapi.security import OAuth2PasswordRequestForm
 from user.models import User
 from user.schema import UserCreate, UserEdit, SuperUserCreate, UserRead, Token
-from user.config import *
 from datetime import timedelta
 from user.dependencies import authenticate_user, create_access_token, get_current_user
 from typing import List
