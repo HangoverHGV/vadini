@@ -3,11 +3,33 @@ from typing import List
 from datetime import datetime
 
 
+class ProductTranslationRead(BaseModel):
+    language: str
+    title: str
+    description: str
+
+    class Config:
+        orm_mode = True
+
+class ProductFeatureRead(BaseModel):
+    feature_name: str
+    feature_value: str
+
+    class Config:
+        orm_mode = True
+
+class ProductImageRead(BaseModel):
+    image_url: str
+
+    class Config:
+        orm_mode = True
+
+
 class ProductRead(BaseModel):
     id: int 
-    translations: List[dict]
-    features: List[dict]
-    images: List[dict]
+    translations: List[ProductTranslationRead]
+    features: List[ProductFeatureRead]
+    images: List[ProductImageRead]
     created_at: datetime
     updated_at: datetime
 

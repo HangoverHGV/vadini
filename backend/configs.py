@@ -70,10 +70,10 @@ redis_client = redis.Redis(**{k:v for k ,v in redis_config.items() if v is not N
 
 # FAST API APP
 
-app = FastAPI(swagger_ui_parameters=SWAGGER_UI_PARAMETERS, swagger_ui_init_oauth=SWAGGER_UI_INIT_OAUTH
+app = FastAPI(swagger_ui_parameters=SWAGGER_UI_PARAMETERS, swagger_ui_init_oauth=SWAGGER_UI_INIT_OAUTH,
               root_path='api',
               docs_url='/docs',
-              redoc_url='/redoc'
+              redoc_url='/redoc',
               openapi_url='/openapi.json',
               title='CMS API',
               description='CMS API',
