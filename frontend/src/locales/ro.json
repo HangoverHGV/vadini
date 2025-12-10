@@ -71,7 +71,9 @@
     "phoneNumber": "Număr de telefon",
     "subject": "Subiect",
     "message": "Mesaj",
-    "submit": "Trimite mesajul"
+    "submit": "Trimite mesajul",
+    "success": "Mulțumim!",
+    "success.mesage": "Mesajul tău a fost trimis cu succes. Te vom contacta în curând."
     },
     "contactDetails": {
       "title": "Informații de contact",

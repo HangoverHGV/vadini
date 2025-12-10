@@ -37,7 +37,6 @@ const ContactContent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
         setSubmitted(true);
         setTimeout(() => {
             setFormData({
@@ -60,12 +59,10 @@ const ContactContent = () => {
                     <p>{intl.formatMessage({ id: 'contact.description.meta' })}</p>
                 </div>
             </section>
-            {/* ...existing code... */}
-            {/* Contact Section */}
             <section className="contact-section">
                 <div className="contact-container">
                     {/* Contact Form */}
-                    <div className="contact-form-wrapper">
+                    <div className="contact-form-wrapper" style={{ display: 'none'}}>
                         <h2>{intl.formatMessage({ id: 'contact.contactForm.title' })}</h2>
                         {submitted ? (
                             <div className="success-message">
@@ -89,7 +86,6 @@ const ContactContent = () => {
                                         placeholder={intl.formatMessage({ id: 'contact.contactForm.fullName' })}
                                     />
                                 </div>
-                                {/* ...existing code... */}
                                 <div className="form-row">
                                     <div className="form-group">
                                         <label htmlFor="email">
