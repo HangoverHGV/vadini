@@ -5,6 +5,20 @@ import { IntlProvider } from "react-intl";
 import enMessages from "./locales/en.json";
 import roMessages from "./locales/ro.json";
 
+// Utility to flatten nested locale JSON
+function flattenMessages(nestedMessages, prefix = "") {
+  return Object.keys(nestedMessages).reduce((messages, key) => {
+    const value = nestedMessages[key];
+    const prefixedKey = prefix ? `${prefix}.${key}` : key;
+    if (typeof value === "object" && value !== null && !Array.isArray(value)) {
+      Object.assign(messages, flattenMessages(value, prefixedKey));
+    } else {
+      messages[prefixedKey] = value;
+    }
+    return messages;
+  }, {});
+}
+
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
@@ -14,8 +28,8 @@ import Contact from "./pages/Contact";
 
 // Define messages outside the component to prevent re-creation on every render
 const messages = {
-  en: enMessages,
-  ro: roMessages,
+  en: flattenMessages(enMessages),
+  ro: flattenMessages(roMessages),
 };
 
 // Function to determine the best initial locale
