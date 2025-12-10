@@ -21,31 +21,45 @@
   "capabilities.repair.description": "Comprehensive repair and refurbishment services for heavy machinery, minimizing downtime and restoring equipment to peak operational performance.",
   "capabilities.simulation.title":"Design and Simulation",
   "capabilities.simulation.description":"Comprehensive Designing and Simulation Services for Heavy equipment Attachments. We provide advanced Finite Element Analysis (FEA) to ensure structural integrity and maximum operational efficiency for your equipment.",
-  "products.container.title": "Demolition Waste Container",
-  "products.container.description.title":"Description",
-  "products.container.description": "Built to withstand the harshest job sites, this container is constructed from high-grade 5mm steel plates throughout, reinforced with UPN 100 mm profiles. This robust engineering ensures exceptional resistance to impact and abrasion from rubble, concrete, and heavy demolition debris, guaranteeing long service life and maximum reliability for efficient site cleanup.",
-  "products.container.dimensions.title": "Dimensions",
-  "products.container.dimensions": "H(mm): 1200 \nBase Bottom:\nL(mm): 2000, l (mm): 1200\nBase Top:\n L(mm): 3000, l(mm): 1500\nVolume(mc): 4",
-  "product.slide1.title": "Beginning",
-  "product.slide1.text": " ",
-  "product.slide2.title":" ",
-  "product.slide2.text": " ", 
-  "product.slide3.title":" ",
-  "product.slide3.text": " ",
-  "product.slide4.title":" ",
-  "product.slide4.text": " ",
-  "product.slide5.title":" ",
-  "product.slide5.text": " ",
-  "product.slide6.title":" ",
-  "product.slide6.text": " ",
-  "product.slide7.title":" ",
-  "product.slide7.text": " ",
-  "product.slide8.title":" ",
-  "product.slide8.text": " ",
-  "product.slide9.title":" ",
-  "product.slide9.text": " ",
-  "product.slide10.title":" ",
-  "product.slide10.text": " ",
+  "products.title": "Products",
+  "products.meta.title":"Products",
+  "products.meta.description": "Explore our premium range of industrial products designed for durability and performance.",
+  "products.all": "All Products",
+  "products.none": "No products available at the moment. Please check back later.",
+  "products.impulse": "Click on any product to view detailed specifications and information",
+  "products.info":{
+    "title": "Need a Custom Solution?",
+    "text": "Don't see what you're looking for? Contact us for tailored metalworking solutions to meet your specific needs.",
+    "button.title":"Contact Us"
+  },
+  "products":[
+    {
+      "title": "Demolition Debris Container",
+      "imageFolder": "container",
+      "description.title": "Description",
+      "description": "Built to withstand the harshest job sites, this container is constructed from high-grade 5mm steel plates throughout, reinforced with UPN 100 mm profiles. This robust engineering ensures exceptional resistance to impact and abrasion from rubble, concrete, and heavy demolition debris, guaranteeing long service life and maximum reliability for efficient site cleanup.",
+      "dimensions.title": "Dimensions",
+      "dimensions": "H (mm): 1200 \nLower Base:\nL(mm): 2000, W(mm): 1200\nUpper Base:\n L(mm): 3000, W(mm): 1500\nVolume(cu.m): 4",
+      "features.title": "Key Features",
+      "features":[
+        {
+          "title":"High-Quality Materials",
+          "icon": "🛡️",
+          "text":"Constructed from 5mm thick steel plates, reinforced with UPN 100 mm profiles for exceptional impact and abrasion resistance."
+        },
+        {
+          "title":"Optimal Capacity",
+          "icon": "⚙️",
+          "text":"4 cu.m volume, ideal for efficient handling of rubble and heavy demolition waste."
+        },
+        {
+          "title":"Robust Design",
+          "icon": "🏗️",
+          "text":"Solid structure designed to withstand the toughest working conditions on site."
+        }
+      ]
+    }
+  ],
   "about.description": "We are a company specializing in metalworking, with extensive experience in manufacturing debris containers, custom-making excavator buckets, and providing welding repairs for construction equipment. Through our work, we combine the strength of metal with the precision of modern technology to offer products that withstand the toughest working conditions.",
   "about.list.0.title": "Debris and Waste Container Rental",
   "about.list.0.description": "We offer complete container rental services for construction, demolition, and debris transport, including site containers for household or industrial waste.",

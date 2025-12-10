@@ -7,6 +7,7 @@ import roMessages from "./locales/ro.json";
 
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
+import Product from "./pages/Product";
 import Products from "./pages/Products";
 import AboutUs from "./pages/AboutUs";
 
@@ -44,9 +45,10 @@ function App() {
           <Route
             element={<Layout switchLocale={switchLocale} locale={locale} />}
           >
-            <Route path="/products" element={<Products />} />
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:title" element={<Product />} />
           </Route>
         </Routes>
       </IntlProvider>

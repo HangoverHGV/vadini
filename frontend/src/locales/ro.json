@@ -21,33 +21,45 @@
   "capabilities.repair.description": "Servicii complete de reparații și recondiționare pentru utilaje grele, minimizând timpul de inactivitate și restabilind echipamentele la performanța operațională maximă.",
   "capabilities.simulation.title":"Simulare și Proiectare",
   "capabilities.simulation.description":"Servicii Complete de Proiectare și Simulare pentru Atașamente de Utilaje Grele. Oferim Analiză cu Elemente Finite (FEA) avansată pentru a asigura integritatea structurală și eficiența operațională maximă a echipamentelor dumneavoastră.",
+  "products.title": "Produse",
   "products.meta.title":"Produse",
-  "products.meta.description": "Containere pentru deșeuri provenite din demolare",
-  "products.container.title": "Container pentru deșeuri provenite din demolare",
-  "products.container.description.title":"Descriere",
-  "products.container.description": "Construit pentru a rezista pe cele mai solicitante șantiere, acest container este fabricat integral din plăci de oțel de 5mm grosime, fiind ranforsat cu profile UPN 100 mm. Această structură robustă asigură o rezistență excepțională la impact și abraziune din partea molozului, betonului și a deșeurilor grele de demolare, garantând o durată lungă de viață și fiabilitate maximă pentru curățarea eficientă a șantierului.",
-  "products.container.dimensions.title": "Dimensiuni",
-  "products.container.dimensions": "H (mm): 1200 \nBaza inferioară:\nL(mm): 2000, l(mm): 1200\nBaza superioară:\n L(mm): 3000, l(mm): 1500\nVolum(mc): 4",
-  "product.slide1.title": "Început",
-  "product.slide1.text": " ",
-  "product.slide2.title":" ",
-  "product.slide2.text": " ", 
-  "product.slide3.title":" ",
-  "product.slide3.text": " ",
-  "product.slide4.title":" ",
-  "product.slide4.text": " ",
-  "product.slide5.title":" ",
-  "product.slide5.text": " ",
-  "product.slide6.title":" ",
-  "product.slide6.text": " ",
-  "product.slide7.title":" ",
-  "product.slide7.text": " ",
-  "product.slide8.title":" ",
-  "product.slide8.text": " ",
-  "product.slide9.title":" ",
-  "product.slide9.text": " ",
-  "product.slide10.title":" ",
-  "product.slide10.text": " ",
+  "products.meta.description": "Explorați gama noastră premium de produse industriale, proiectate pentru durabilitate și performanță.",
+  "products.all": "Toate produsele",
+  "products.none": "Nici un produs disponibil momentan. Vă rugăm să reveniți mai târziu.",
+  "products.impulse": "Click pe orice produs pentru a vedea specificații și informații detaliate",
+  "products.info":{
+    "title": "Ai nevoie de o soluție personalizată?",
+    "text": "Nu găsești ceea ce cauți? Contactează-ne pentru soluții de confecții metalice adaptate nevoilor tale specifice.",
+    "button.title":"Contactează-ne"
+  },
+  "products": [
+    {
+      "title": "Container pentru deșeuri provenite din demolare",
+      "imageFolder": "container",
+      "description.title": "Descriere",
+      "description": "Construit pentru a rezista pe cele mai solicitante șantiere, acest container este fabricat integral din plăci de oțel de 5mm grosime, fiind ranforsat cu profile UPN 100 mm. Această structură robustă asigură o rezistență excepțională la impact și abraziune din partea molozului, betonului și a deșeurilor grele de demolare, garantând o durată lungă de viață și fiabilitate maximă pentru curățarea eficientă a șantierului.",
+      "dimensions.title": "Dimensiuni",
+      "dimensions": "H (mm): 1200 \nBaza inferioară:\nL(mm): 2000, l(mm): 1200\nBaza superioară:\n L(mm): 3000, l(mm): 1500\nVolum(mc): 4",
+      "features.title": "Caracteristici principale",
+      "features":[
+        {
+          "title":"Materiale de înaltă calitate",
+          "icon": "🛡️",
+          "text":"Fabricat din plăci de oțel de 5mm grosime, ranforsat cu profile UPN 100 mm pentru rezistență excepțională la impact și abraziune."
+        },
+        {
+          "title":"Capacitate optimă",
+          "icon": "⚙️",
+          "text":"Volum de 4 mc, ideal pentru gestionarea eficientă a molozului și deșeurilor grele de demolare."
+        },
+        {
+          "title":"Design robust",
+          "icon": "🏗️",
+          "text":"Structură solidă proiectată pentru a face față celor mai dure condiții de lucru pe șantier."
+        }
+      ]
+    }
+  ],
   "about.description": "Suntem o companie specializată în confecții metalice, cu o vastă experiență în fabricarea containerelor de moloz, confecționarea cupelor de excavator și reparațiile prin sudură ale utilajelor de construcții. Prin munca noastră, îmbinăm forța metalului cu precizia tehnologiei moderne, pentru a oferi produse care rezistă în cele mai dure condiții de lucru.",
   "about.list.0.title": "Închiriere containere de moloz și deșeuri",
   "about.list.0.description": "Oferim servicii complete de închiriere containere pentru construcții, demolări și transport moloz, inclusiv containere de șantier pentru deșeuri menajere sau industriale.",
