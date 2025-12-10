@@ -1,31 +1,21 @@
-FROM node:20-alpine AS build
+# Use Node.js
+FROM node:20-alpine
 
+# Set working directory
 WORKDIR /app
 
+# Install deps separately (for caching)
 COPY package*.json ./
-RUN npm ci
-# Ensure esbuild is installed correctly for the container's architecture
-RUN npm rebuild esbuild
+RUN npm install
+
+# Copy source (will be overridden by volume in dev)
 COPY . .
-ENV NODE_OPTIONS=--max-old-space-size=4096
-RUN npm run build -- --debug
 
-FROM nginx:1.19.6-alpine
+# Expose Vite dev server port
+EXPOSE 5173
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Force polling for HMR (useful inside Docker)
+ENV CHOKIDAR_USEPOLLING=true
 
-COPY --from=build /app/dist /usr/share/nginx/html
-
-WORKDIR /app
-RUN chown -R nginx:nginx /app && chmod -R 755 /app && \
-    chown -R nginx:nginx /var/cache/nginx && \
-    chown -R nginx:nginx /var/log/nginx && \
-    chown -R nginx:nginx /etc/nginx/conf.d
-RUN touch /var/run/nginx.pid && \
-    chown -R nginx:nginx /var/run/nginx.pid
-
-USER nginx
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# Run Vite dev server
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
