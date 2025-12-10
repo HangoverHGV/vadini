@@ -58,6 +58,32 @@
           "text":"Structură solidă proiectată pentru a face față celor mai dure condiții de lucru pe șantier."
         }
       ]
+    },
+    {
+      "title": "Cupă de taluzare pentru miniexacavator(1T-2.5T)",
+      "imageFolder": "taluzare-1-2.5t",
+      "description.title": "Descriere",
+      "description": "Cupa de taluzare pentru miniexcavatoare cu o greutate între 1 și 2.5 tone este proiectată pentru a oferi performanțe superioare în lucrările de nivelare și modelare a terenului. Fabricată din oțel de înaltă calitate, această cupă este echipată cu o lamă frontală din HB500, ideală pentru tăierea precisă a solului și manipularea eficientă a materialelor. Designul său robust și capacitatea optimizată permit utilizarea în diverse aplicații, de la construcții mici până la lucrări agricole, asigurând durabilitate și fiabilitate pe termen lung.",
+      "dimensions.title": "Dimensiuni",
+      "dimensions": "Lățime (mm): 915\nCapacitate (litri): 50\nGreutate (kg): 70",
+      "features.title": "Caracteristici principale",
+      "features":[
+        {
+          "title":"Materiale de înaltă calitate",
+          "icon": "🛡️",
+          "text":"Construită din oțel rezistent, cu lamă frontală din HB500 pentru durabilitate și performanță superioară."
+        },
+        {
+          "title":"Capacitate optimizată",
+          "icon": "⚙️",
+          "text":"Volum de 50 litri, perfect pentru lucrări de taluzare și nivelare a terenului."
+        },
+        {
+          "title":"Design optimizat",
+          "icon": "🏗️",
+          "text":"Lama frontală ascuțită și întărită pentru tăiere precisă și manipulare eficientă a materialelor."
+        }
+      ]
     }
   ],
     "contact":{
