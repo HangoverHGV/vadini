@@ -4,6 +4,7 @@ import { useIntl } from "react-intl";
 import { getProductDetails } from "../api/products";
 import { baseURL } from "../api/constants";
 import "../assets/css/Products.css";
+import "../assets/css/ProductDescription.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -262,10 +263,9 @@ export default function ProductDetails() {
           )}
         </div>
 
-        <div style={{ textAlign: "center" }}>
-          <p className="product-description" style={{ marginBottom: 8 }}>
-            {description}
-          </p>
+        <div className="product-description-container">
+          <h2>{intl.formatMessage({ id: "product.description" })}</h2>
+          <p className="product-description-text">{description}</p>
         </div>
 
         {/* You can add more product details below (price, specs, etc.) */}
