@@ -1,6 +1,20 @@
 services:
-  app:
-    image: hangoverhgv/vadini:1.0
-    container_name: Frontend-Vadini
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: Vadini
     ports:
-      - "5174:80"
+      - "5174:5174"
+    volumes:
+      # Only mount what changes during development
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+      - ./frontend/vite.config.js:/app/vite.config.js
+      - ./frontend/index.html:/app/index.html
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - VITE_API_URL=http://localhost:8002
+      - PROD=false
+      - WATCHPACK_POLLING=true
+      - VITE_HMR_HOST=localhost
