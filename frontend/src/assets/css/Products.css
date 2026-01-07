@@ -1,0 +1,110 @@
+/* vadini/frontend/src/assets/css/Products.css
+   Center everything inside the product card and provide a clean responsive layout.
+*/
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 12px;
+}
+
+/* Product card: center content vertically and horizontally */
+.product-card {
+    margin: 10px;
+    width: 350px;
+    max-width: calc(100% - 24px);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* horizontal centering of children */
+    justify-content: flex-start;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    padding: 16px;
+    box-sizing: border-box;
+    text-align: center; /* ensures text is centered */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* Images wrapper: center thumbnails in rows */
+.product-images {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center; /* center thumbnails on each row */
+    align-items: center; /* vertically center within row */
+    width: 100%;
+}
+
+/* Figure wrapper for each thumbnail - keep consistent sizing and center content */
+.product-images figure {
+    margin: 0;
+    width: 250px;
+    height: 120px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #f6f6f6;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03) inset;
+}
+
+/* Images should fill the figure while preserving aspect ratio */
+.product-images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Fallback single product image (when no gallery thumbnails) */
+.product-image--fallback {
+    width: 250px;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 8px 0;
+    display: block;
+}
+
+/* Title and description centered */
+.product-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 12px 0 8px;
+    color: #000;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.product-description {
+    font-size: 14px;
+    margin: 0 0 12px;
+    color: #222;
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* Make the card more compact on small screens */
+@media (max-width: 420px) {
+    .product-card {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .product-images figure {
+        width: 28vw;
+        height: 28vw;
+        min-width: 80px;
+        min-height: 80px;
+    }
+
+    .product-image--fallback {
+        width: 100%;
+    }
+}

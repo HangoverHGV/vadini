@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { baseURL } from "../api/constants";
+import "../assets/css/Products.css";
 
 /**
  * ProductCard
@@ -113,7 +114,6 @@ export default function ProductCard({ product }) {
           preferred,
         };
       });
-    console.log(product);
     setAvailableImages(imgs);
   }, [product]);
   const productTitle = product.translations[0].title;
@@ -121,8 +121,6 @@ export default function ProductCard({ product }) {
 
   return (
     <div className="product-card">
-      <h3 className="product-title">{productTitle}</h3>
-
       <div
         className="product-images"
         style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}
@@ -138,33 +136,18 @@ export default function ProductCard({ product }) {
         )}
 
         {availableImages.map((img, idx) => (
-          <figure
-            key={`${img.base}-${idx}`}
-            style={{
-              width: 120,
-              height: 120,
-              margin: 0,
-              overflow: "hidden",
-              borderRadius: 4,
-              background: "#f6f6f6",
-            }}
-          >
+          <figure key={`${img.base}-${idx}`}>
             <img
               src={normalizeUrl(img.preferred)}
               srcSet={buildSrcSet(img)}
               sizes="(max-width: 600px) 33vw, 120px"
               loading="lazy"
               alt={`${productTitle || "Product"} - ${img.base}`}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                display: "block",
-              }}
             />
           </figure>
         ))}
       </div>
+      <h3 className="product-title">{productTitle}</h3>
 
       {productDescription && (
         <p className="product-description">{productDescription}</p>
