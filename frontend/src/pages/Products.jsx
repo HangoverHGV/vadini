@@ -1,19 +1,24 @@
 import { useIntl } from "react-intl";
 import { useState, useEffect } from "react";
-import ProductsCarousel from "../components/ProductsCarousel";
-import ProductDescription from "../components/ProductDescription";
+import ProductCard from "../components/ProductCard";
 import getProducts from "../api/products";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
-  const intl = useIntl();
   useEffect(() => {
     const fetchProducts = async () => {
       const products = await getProducts();
       setProducts(products);
-      console.log(products);
     };
     fetchProducts();
   }, []);
-  return <></>;
+  return (
+    <>
+      <div className="container">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    </>
+  );
 }
