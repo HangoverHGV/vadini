@@ -83,6 +83,15 @@
     line-height: 1.2;
 }
 
+.product-description {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 8px 0;
+    color: #666;
+    text-align: center;
+    line-height: 1.4;
+}
+
 .product-link {
     text-decoration: none;
 }

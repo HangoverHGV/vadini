@@ -255,7 +255,6 @@ export default function ProductCard({ product = {} }) {
       <Link className="product-link" to={`/products/${product.id}`}>
         {/* Title & Description centered by CSS */}
         <h3 className="product-title">{title}</h3>
-        {description && <p className="product-description">{description}</p>}
       </Link>
     </div>
   );
