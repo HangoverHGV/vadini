@@ -5,7 +5,9 @@ export default async function getProducts(params = {}) {
   return data;
 }
 
-export async function getProductDetails(productId) {
-  const { data } = await apiClient.get(`/products/${productId}`);
+export async function getProductDetails(productId, { language }) {
+  const { data } = await apiClient.get(`/products/${productId}`, {
+    params: { language },
+  });
   return data;
 }

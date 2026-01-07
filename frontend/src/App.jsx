@@ -9,6 +9,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import AboutUs from "./pages/AboutUs";
+import ProductDetails from "./pages/ProductDetails";
 
 // Define messages outside the component to prevent re-creation on every render
 const messages = {
@@ -51,6 +52,7 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
           </Route>
         </Routes>
       </IntlProvider>

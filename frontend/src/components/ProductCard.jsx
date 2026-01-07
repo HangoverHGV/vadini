@@ -1,157 +1,262 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { baseURL } from "../api/constants";
 import "../assets/css/Products.css";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Link } from "react-router-dom";
 
 /**
  * ProductCard
- * - Shows product title
- * - Displays first 10 unique images (deduped by base name across sizes)
- * - Prefers large -> medium -> small for the main src, and exposes a srcSet
- * - Uses native lazy-loading (`loading="lazy"`)
  *
- * Expected `product.images` shape:
- * [
- *   { id: 55, image_url: "/app/images/small/wallpaperflare_small.webp" },
- *   { id: 56, image_url: "/app/images/medium/wallpaperflare_medium.webp" },
- *   { id: 57, image_url: "/app/images/large/wallpaperflare_large.webp" }
- * ]
+ * - Renders product title + description
+ * - Shows up to the first 10 unique images in a carousel (deduped by base name)
+ * - When product provides small/medium/large variants, prefers large -> medium -> small
+ * - Prepends `${baseURL}/api` to relative image paths and leaves absolute URLs intact
+ * - Appends the user's language from localStorage as ?language=... when possible
+ * - Uses native `loading="lazy"` on images and enables the carousel's `lazyLoad`
  *
- * Deduping logic:
- * - Extract base name (remove extension and trailing "_small|_medium|_large" or "-small|-medium|-large")
- * - Group images by base name, keep references to small/medium/large when present
- * - For each base choose preferred url (large -> medium -> small -> first)
+ * Expected product.images entries:
+ *   { id: 55, image_url: "/app/images/small/wallpaperflare_small.webp" }
+ *   or absolute: "http://127.0.0.1:8002/api/app/images/large/..."
+ *
+ * Notes:
+ * - The component does not depend on any global state; it reads `language` from localStorage.
+ * - Styling is handled by ../assets/css/Products.css (which centers card internals).
  */
 
-export default function ProductCard({ product }) {
-  const [availableImages, setAvailableImages] = useState([]);
+function safeGetLanguage() {
+  try {
+    if (typeof window !== "undefined" && window.localStorage) {
+      return localStorage.getItem("language") || "";
+    }
+  } catch (e) {
+    // ignore (e.g., SSR or blocked storage)
+  }
+  return "";
+}
 
-  // Helper: ensure URLs are absolute (prepend baseURL if relative)
-  const normalizeUrl = (url) => {
-    return `${baseURL}/api${url.startsWith("/") ? "" : "/"}${url}`;
-  };
+function makeAbsoluteAndAppendLang(rawUrl, lang) {
+  if (!rawUrl) return "";
 
-  // Build srcSet string from sizes found
-  const buildSrcSet = (sizes) => {
-    // approximate width descriptors
-    const srcs = [];
-    if (sizes.small) srcs.push(`${normalizeUrl(sizes.small)} 400w`);
-    if (sizes.medium) srcs.push(`${normalizeUrl(sizes.medium)} 800w`);
-    if (sizes.large) srcs.push(`${normalizeUrl(sizes.large)} 1200w`);
-    // fallback to any other available url without descriptor
-    if (sizes.original && srcs.length === 0)
-      srcs.push(`${normalizeUrl(sizes.original)} 800w`);
-    return srcs.join(", ");
-  };
+  // If absolute URL (http(s) or protocol-relative), use as-is and append language param
+  if (/^(https?:)?\/\//i.test(rawUrl)) {
+    try {
+      const u = new URL(rawUrl);
+      if (lang) u.searchParams.set("language", lang);
+      return u.toString();
+    } catch (e) {
+      return rawUrl;
+    }
+  }
+
+  // Otherwise treat as relative and prefix baseURL/api
+  const base = (baseURL || "").replace(/\/$/, "");
+  const path = rawUrl.startsWith("/") ? rawUrl : `/${rawUrl}`;
+  const full = `${base}/api${path}`;
+  try {
+    const u = new URL(full);
+    if (lang) u.searchParams.set("language", lang);
+    return u.toString();
+  } catch (e) {
+    return full;
+  }
+}
+
+/**
+ * Given raw product.images array, group variants by a 'base name' to dedupe
+ * Example filenames:
+ *   screenshot_large.webp, screenshot_medium.webp, screenshot_small.webp
+ *
+ * We extract the base name by stripping the common suffix (_large/_medium/_small or -large/-medium/-small)
+ * and group entries by that base. For each group choose preferred = large || medium || small || first.
+ */
+function dedupeAndSelect(images = [], maxItems = 10) {
+  const groups = new Map(); // base -> { small, medium, large, original, order }
+
+  images.forEach((item) => {
+    if (!item || !item.image_url) return;
+    const url = item.image_url;
+    const filename = url.split("/").pop() || url;
+    const nameNoExt = filename.replace(/\.[^.]+$/, "");
+
+    // check path segments first for 'large'/'medium'/'small'
+    const pathSegments = url.split("/").map((s) => (s || "").toLowerCase());
+    const segMatch = pathSegments.find(
+      (s) => s === "large" || s === "medium" || s === "small",
+    );
+    let sizeToken = segMatch || null;
+
+    // fallback to filename suffix like name_large, name-medium, name_small
+    const m = nameNoExt.match(/^(.*?)(?:[_-](large|medium|small))?$/i);
+    const baseName = m && m[1] ? m[1] : nameNoExt;
+    if (!sizeToken && m && m[2]) sizeToken = m[2].toLowerCase();
+
+    const baseKey = baseName;
+
+    if (!groups.has(baseKey)) {
+      groups.set(baseKey, {
+        base: baseKey,
+        small: null,
+        medium: null,
+        large: null,
+        original: null,
+        order: groups.size,
+      });
+    }
+
+    const entry = groups.get(baseKey);
+    const token = (sizeToken || "original").toLowerCase();
+    if (token === "large") entry.large = entry.large || url;
+    else if (token === "medium") entry.medium = entry.medium || url;
+    else if (token === "small") entry.small = entry.small || url;
+    else entry.original = entry.original || url;
+  });
+
+  // Convert to ordered array and pick preferred url for each group
+  const items = Array.from(groups.values())
+    .sort((a, b) => a.order - b.order)
+    .slice(0, maxItems)
+    .map((entry) => {
+      const preferred =
+        entry.large || entry.medium || entry.small || entry.original || "";
+      return {
+        base: entry.base,
+        small: entry.small,
+        medium: entry.medium,
+        large: entry.large,
+        original: entry.original,
+        preferred,
+      };
+    });
+
+  return items;
+}
+
+export default function ProductCard({ product = {} }) {
+  const [slides, setSlides] = useState([]);
+  const language = safeGetLanguage();
 
   useEffect(() => {
     if (!product || !Array.isArray(product.images)) {
-      setAvailableImages([]);
+      setSlides([]);
       return;
     }
 
-    // Group images by base name
-    const groups = new Map();
-    // Preserve insertion order by iterating product.images
-    for (const img of product.images) {
-      if (!img || !img.image_url) continue;
+    const deduped = dedupeAndSelect(product.images, 10);
 
-      const url = img.image_url;
+    // Normalize URLs (make absolute and append language)
+    const normalized = deduped.map((it) => ({
+      ...it,
+      preferred: makeAbsoluteAndAppendLang(it.preferred, language),
+      small: it.small ? makeAbsoluteAndAppendLang(it.small, language) : null,
+      medium: it.medium ? makeAbsoluteAndAppendLang(it.medium, language) : null,
+      large: it.large ? makeAbsoluteAndAppendLang(it.large, language) : null,
+      original: it.original
+        ? makeAbsoluteAndAppendLang(it.original, language)
+        : null,
+    }));
 
-      const filename = url.split("/").pop() || url;
+    setSlides(normalized);
+  }, [product, language]);
 
-      // remove extension
-      const nameNoExt = filename.replace(/\.[^.]+$/, "");
-      // Determine size token from path segments (e.g., .../large/...) or filename suffix
-      let sizeToken = "original";
-      const pathSegments = url.split("/").map((s) => (s || "").toLowerCase());
-      // check for explicit segment like 'small', 'medium', 'large'
-      const segMatch = pathSegments.find(
-        (s) => s === "small" || s === "medium" || s === "large",
-      );
-      if (segMatch) {
-        sizeToken = segMatch;
-      } else {
-        // fallback to filename suffix (e.g. name_small.webp)
-        const m = nameNoExt.match(/^(.*?)(?:[_-](small|medium|large))?$/i);
-        if (m && m[2]) sizeToken = m[2].toLowerCase();
-      }
-      // compute base name by removing the size suffix if present
-      const baseMatch = nameNoExt.match(
-        /^(.*?)(?:[_-](small|medium|large))?$/i,
-      );
-      const base = baseMatch ? baseMatch[1] : nameNoExt;
-
-      if (!groups.has(base))
-        groups.set(base, {
-          base,
-          small: null,
-          medium: null,
-          large: null,
-          original: null,
-          order: groups.size,
-        });
-      const entry = groups.get(base);
-
-      if (sizeToken === "small") entry.small = url;
-      else if (sizeToken === "medium") entry.medium = url;
-      else if (sizeToken === "large") entry.large = url;
-      else entry.original = entry.original || url; // keep first seen original if any
-    }
-
-    // Convert to array ordered by first occurrence, choose preferred url (large->medium->small->original)
-    const imgs = Array.from(groups.values())
-      .sort((a, b) => a.order - b.order)
-      .slice(0, 10) // first 10 unique base images
-      .map((entry) => {
-        const preferred =
-          entry.large || entry.medium || entry.small || entry.original || "";
-        return {
-          base: entry.base,
-          small: entry.small,
-          medium: entry.medium,
-          large: entry.large,
-          original: entry.original,
-          preferred,
-        };
-      });
-    setAvailableImages(imgs);
-  }, [product]);
-  const productTitle = product.translations[0].title;
-  const productDescription = product.translations[0].description;
+  const title =
+    (product.translations &&
+      product.translations[0] &&
+      product.translations[0].title) ||
+    product.name ||
+    "";
+  const description =
+    (product.translations &&
+      product.translations[0] &&
+      product.translations[0].description) ||
+    product.description ||
+    "";
 
   return (
-    <div className="product-card">
-      <div
-        className="product-images"
-        style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}
-      >
-        {availableImages.length === 0 && product?.image && (
-          // Fallback: single `product.image` if provided by API
-          <img
-            src={normalizeUrl(product.image)}
-            alt={product?.name || "product image"}
-            loading="lazy"
-            style={{ width: "120px", height: "120px", objectFit: "cover" }}
-          />
-        )}
-
-        {availableImages.map((img, idx) => (
-          <figure key={`${img.base}-${idx}`}>
+    <div className="product-card" role="group" aria-label={title || "Product"}>
+      {/* Carousel region */}
+      <div className="product-images" style={{ width: "100%" }}>
+        {slides.length === 0 ? (
+          // fallback: show single image if available
+          product.image ? (
             <img
-              src={normalizeUrl(img.preferred)}
-              srcSet={buildSrcSet(img)}
-              sizes="(max-width: 600px) 33vw, 120px"
+              className="product-image--fallback"
+              src={makeAbsoluteAndAppendLang(product.image, language)}
+              alt={title || "product image"}
               loading="lazy"
-              alt={`${productTitle || "Product"} - ${img.base}`}
+              style={{
+                width: "100%",
+                maxWidth: 350,
+                height: "auto",
+                borderRadius: 8,
+              }}
             />
-          </figure>
-        ))}
+          ) : (
+            <div
+              style={{
+                height: 120,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#777",
+              }}
+            >
+              No images
+            </div>
+          )
+        ) : (
+          <Carousel
+            showThumbs={false}
+            showStatus={false}
+            infiniteLoop
+            useKeyboardArrows
+            emulateTouch
+            swipeable
+            autoPlay={false}
+            dynamicHeight={false}
+            centerMode={false}
+            showArrows
+            lazyLoad
+          >
+            {slides.map((s, i) => (
+              <div
+                key={`${s.base}-${i}`}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {/* main image: use preferred (large/medium/small) and provide srcSet with variants */}
+                <img
+                  src={s.preferred}
+                  srcSet={[
+                    s.small ? `${s.small} 400w` : null,
+                    s.medium ? `${s.medium} 800w` : null,
+                    s.large ? `${s.large} 1200w` : null,
+                  ]
+                    .filter(Boolean)
+                    .join(", ")}
+                  sizes="(max-width: 600px) 90vw, 350px"
+                  alt={`${title || "Product"} - ${s.base}`}
+                  loading="lazy"
+                  style={{
+                    maxHeight: 300,
+                    width: "100%",
+                    objectFit: "cover",
+                    borderRadius: 8,
+                  }}
+                />
+              </div>
+            ))}
+          </Carousel>
+        )}
       </div>
-      <h3 className="product-title">{productTitle}</h3>
-
-      {productDescription && (
-        <p className="product-description">{productDescription}</p>
-      )}
+      <Link className="product-link" to={`/products/${product.id}`}>
+        {/* Title & Description centered by CSS */}
+        <h3 className="product-title">{title}</h3>
+        {description && <p className="product-description">{description}</p>}
+      </Link>
     </div>
   );
 }
