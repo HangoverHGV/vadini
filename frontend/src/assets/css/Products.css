@@ -1,21 +1,59 @@
 /* vadini/frontend/src/assets/css/Products.css
    Center everything inside the product card and provide a clean responsive layout.
+   Added layout helpers so the product list fills available vertical space and pushes
+   the footer to the bottom when there are few products.
 */
 
+/* App-level helpers:
+   These ensure the app shell / main content can be stretched so the footer stays at the bottom.
+   (Layout.jsx already makes the top-level container a column flex; these rules are defensive
+   so older builds or other pages behave consistently.)
+*/
+html,
+body,
+#root,
+.app-shell {
+    height: 100%;
+    min-height: 100%;
+}
+
+.app-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* main-content (the area wrapping page content) should grow to fill space */
+.main-content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Product container: allow it to grow and use align-content so wrapped rows can fill vertically.
+   flex:1 makes the container stretch inside .main-content to push footer down when there are few items.
+*/
 .product-container {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
     justify-content: center;
     align-items: flex-start;
+    align-content: flex-start; /* ensures wrapped rows start from top and can fill vertically */
     padding: 12px;
+    box-sizing: border-box;
+    flex: 1 1 auto; /* stretch inside main-content to keep footer at page bottom */
+    min-height: 40vh; /* reasonable minimum to avoid footer crowding on very short pages */
 }
 
-/* Product card: center content vertically and horizontally */
+/* Product card: center content vertically and horizontally.
+   Use flexible height instead of a fixed height so cards size naturally and the layout is responsive.
+*/
 .product-card {
     margin: 10px;
     width: 350px;
-    height: 300px;
+    min-width: 220px;
+    min-height: 260px;
     max-width: calc(100% - 24px);
     display: flex;
     flex-direction: column;
@@ -112,5 +150,12 @@
 
     .product-image--fallback {
         width: 100%;
+    }
+}
+
+/* When viewport is very tall (desktop), allow the product area to expand less aggressively */
+@media (min-height: 900px) {
+    .product-container {
+        min-height: 50vh;
     }
 }
