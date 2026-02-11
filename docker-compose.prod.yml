@@ -1,6 +1,8 @@
 services:
   app:
-    image: hangoverhgv/vadini:1.0
+    image: hangoverhgv/vadini:2.1.8
     container_name: Frontend-Vadini
     ports:
       - "5174:80"
+    environment:
+      - PROD=true

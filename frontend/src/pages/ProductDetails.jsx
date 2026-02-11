@@ -48,7 +48,9 @@ function makeAbsoluteAndAppendLang(rawUrl, lang) {
 
   // Relative: prefix baseURL + /api
   const base = (baseURL || "").replace(/\/$/, "");
-  const path = rawUrl.startsWith("/") ? rawUrl : `/${rawUrl}`;
+  let path = rawUrl.startsWith("/") ? rawUrl : `/${rawUrl}`;
+  // Strip leading /app so /app/images/... becomes /images/...
+  path = path.replace(/^\/app\//, "/");
   const full = `${base}/api${path}`;
   try {
     const u = new URL(full);
@@ -193,7 +195,12 @@ export default function ProductDetails() {
   const tabItems = [
     {
       title: intl.formatMessage({ id: "product.description" }),
-      content: <p className="product-description-text">{description}</p>,
+      content: (
+        <div
+          className="product-description-text"
+          dangerouslySetInnerHTML={{ __html: description }}
+        />
+      ),
     },
     {
       title: intl.formatMessage({ id: "product.features" }),

@@ -12,6 +12,22 @@
     --feature-max: 260px;
 }
 
+/* Product description text */
+.product-description-text {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    color: white;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.product-description-text p {
+    margin-bottom: 1em;
+}
+
 /* Container holding feature items */
 .product-features-container {
     padding: 20px;

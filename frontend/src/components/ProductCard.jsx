@@ -51,7 +51,9 @@ function makeAbsoluteAndAppendLang(rawUrl, lang) {
 
   // Otherwise treat as relative and prefix baseURL/api
   const base = (baseURL || "").replace(/\/$/, "");
-  const path = rawUrl.startsWith("/") ? rawUrl : `/${rawUrl}`;
+  let path = rawUrl.startsWith("/") ? rawUrl : `/${rawUrl}`;
+  // Strip leading /app so /app/images/... becomes /images/...
+  path = path.replace(/^\/app\//, "/");
   const full = `${base}/api${path}`;
   try {
     const u = new URL(full);
